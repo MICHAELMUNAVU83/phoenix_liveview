@@ -1,0 +1,56 @@
+<h1>Show Booking</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.booking_show_path(@socket, :show, @booking)}>
+    <.live_component
+      module={PhoenixTherapistWeb.BookingLive.FormComponent}
+      id={@booking.id}
+      title={@page_title}
+      action={@live_action}
+      booking={@booking}
+      return_to={Routes.booking_show_path(@socket, :show, @booking)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Counselor gender preference:</strong>
+    <%= @booking.counselor_gender_preference %>
+  </li>
+
+  <li>
+    <strong>Referred by:</strong>
+    <%= @booking.referred_by %>
+  </li>
+
+  <li>
+    <strong>Counsulted before:</strong>
+    <%= @booking.counsulted_before %>
+  </li>
+
+  <li>
+    <strong>Medical history:</strong>
+    <%= @booking.medical_history %>
+  </li>
+
+  <li>
+    <strong>Next of kin name:</strong>
+    <%= @booking.next_of_kin_name %>
+  </li>
+
+  <li>
+    <strong>Next of kin number:</strong>
+    <%= @booking.next_of_kin_number %>
+  </li>
+
+  <li>
+    <strong>Visit:</strong>
+    <%= @booking.visit %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.booking_show_path(@socket, :edit, @booking), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.booking_index_path(@socket, :index) %></span>

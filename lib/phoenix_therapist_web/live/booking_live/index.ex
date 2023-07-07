@@ -4,14 +4,20 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
   alias PhoenixTherapist.Bookings
   alias PhoenixTherapist.Bookings.Booking
   alias PhoenixTherapist.AvailableTimes
+  alias PhoenixTherapist.Accounts
 
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
+    user = Accounts.get_user_by_session_token(session["user_token"])
+
+    IO.inspect(user)
+
     {:ok,
      socket
      |> assign(:live_action, :index)
      |> assign(:bookings, Bookings.list_bookings())
      |> assign(:selected_date, "")
+     |> assign(:user, user)
      |> assign(
        :date_changeset,
        AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{})
@@ -55,24 +61,46 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
   end
 
   def handle_event("search_available_times", %{"available_time" => %{"date" => date}}, socket) do
-    IO.inspect(date)
-
     number_of_times_date_is_booked = length(Bookings.list_booked_times_for_a_date(date))
-    IO.inspect(number_of_times_date_is_booked)
+
+    number_of_times_date_is_booked_by_user =
+      length(Accounts.list_bookings_for_user_by_date(date, socket.assigns.user.id))
+
+    IO.inspect(number_of_times_date_is_booked_by_user)
+
+    available_times = AvailableTimes.list_times_selected_for_a_date(date)
 
     slots_available =
-      if number_of_times_date_is_booked < 4 do
-        4 - number_of_times_date_is_booked
+      if number_of_times_date_is_booked < length(available_times) do
+        length(available_times) - number_of_times_date_is_booked
       else
         0
       end
 
     doctor_available_for_date = Enum.member?(AvailableTimes.list_available_dates(), date)
 
-    IO.inspect(doctor_available_for_date)
-
-    if doctor_available_for_date do
-      if number_of_times_date_is_booked == 4 do
+    if number_of_times_date_is_booked_by_user < 0 do
+      if doctor_available_for_date do
+        if number_of_times_date_is_booked == length(available_times) do
+          {:noreply,
+           socket
+           |> assign(:selected_date, "")
+           |> assign(
+             :date_changeset,
+             AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
+           )
+           |> put_flash(:error, "This date is fully booked")}
+        else
+          {:noreply,
+           socket
+           |> assign(:selected_date, date)
+           |> assign(
+             :date_changeset,
+             AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
+           )
+           |> put_flash(:info, "There are #{slots_available} slots available for #{date}")}
+        end
+      else
         {:noreply,
          socket
          |> assign(:selected_date, "")
@@ -80,16 +108,7 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
            :date_changeset,
            AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
          )
-         |> put_flash(:error, "This date is fully booked")}
-      else
-        {:noreply,
-         socket
-         |> assign(:selected_date, date)
-         |> assign(
-           :date_changeset,
-           AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
-         )
-         |> put_flash(:info, "There are #{slots_available} slots available for #{date}")}
+         |> put_flash(:error, "The doctor is not available for #{date}")}
       end
     else
       {:noreply,
@@ -99,7 +118,7 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
          :date_changeset,
          AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
        )
-       |> put_flash(:error, "The doctor is not available for #{date}")}
+       |> put_flash(:error, "You have already booked an appointment for #{date}")}
     end
   end
 

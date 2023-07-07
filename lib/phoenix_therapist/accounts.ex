@@ -26,6 +26,26 @@ defmodule PhoenixTherapist.Accounts do
     Repo.get_by(User, email: email)
   end
 
+  def list_bookings_for_user_by_date(date, user_id) do
+    # Repo.all(User)
+    # |> Repo.preload(:bookings)
+    # |> Enum.filter(fn user -> user.bookings != [] end)
+    # |> Enum.map(fn user -> {user.first_name, user.bookings} end)
+    # |> Enum.map(fn {first_name, bookings} ->
+    #   {first_name, Enum.filter(bookings, fn booking -> booking.available_time.date == date end)}
+    # end)
+    query =
+      from(u in User,
+        where: u.id == ^user_id,
+        join: b in assoc(u, :bookings),
+        join: a in assoc(b, :available_time),
+        where: a.date == ^date,
+        select: {u.first_name, b}
+      )
+
+    Repo.all(query)
+  end
+
   @doc """
   Gets a user by email and password.
 

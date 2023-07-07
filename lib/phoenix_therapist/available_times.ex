@@ -29,6 +29,12 @@ defmodule PhoenixTherapist.AvailableTimes do
     |> Enum.map(fn available_time -> {available_time.time, available_time.id} end)
   end
 
+  def list_times_selected_for_a_date(date) do
+    Repo.all(AvailableTime)
+    |> Repo.preload(:bookings)
+    |> Enum.filter(fn available_time -> available_time.date == date end)
+  end
+
   def times_for_a_date(date) do
     query =
       from(a in AvailableTime,

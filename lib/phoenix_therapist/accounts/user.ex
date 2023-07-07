@@ -10,7 +10,7 @@ defmodule PhoenixTherapist.Accounts.User do
     field(:last_name, :string)
     field(:phone_number, :string)
     field(:place_of_residence, :string)
-    field(:date_of_birth, :date)
+    field(:date_of_birth, :string)
     field(:role, :string, default: "user")
     field(:county, :string)
     field(:marital_status, :string)
@@ -46,7 +46,7 @@ defmodule PhoenixTherapist.Accounts.User do
     |> cast(attrs, [
       :email,
       :password,
-       :gender,
+      :gender,
       :first_name,
       :last_name,
       :phone_number,
@@ -57,7 +57,6 @@ defmodule PhoenixTherapist.Accounts.User do
       :marital_status,
       :id_number,
       :occupation
-
     ])
     |> validate_email()
     |> validate_password(opts)

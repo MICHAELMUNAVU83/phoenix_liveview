@@ -7,7 +7,6 @@ defmodule PhoenixTherapistWeb.BookingLive.FormComponent do
   @impl true
   def update(%{booking: booking} = assigns, socket) do
     changeset = Bookings.change_booking(booking)
-    
 
     {:ok,
      socket
@@ -43,7 +42,10 @@ defmodule PhoenixTherapistWeb.BookingLive.FormComponent do
   end
 
   defp save_booking(socket, :new, booking_params) do
-    case Bookings.create_booking(booking_params) do
+    user = socket.assigns.user
+    new_booking_params = Map.put(booking_params, "user_id", user.id)
+
+    case Bookings.create_booking(new_booking_params) do
       {:ok, _booking} ->
         {:noreply,
          socket

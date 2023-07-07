@@ -11,6 +11,7 @@ defmodule PhoenixTherapist.Bookings.Booking do
     field(:referred_by, :string)
     field(:visit, :string)
     belongs_to(:available_time, PhoenixTherapist.AvailableTimes.AvailableTime)
+    belongs_to(:user, PhoenixTherapist.Accounts.User)
 
     timestamps()
   end
@@ -26,7 +27,8 @@ defmodule PhoenixTherapist.Bookings.Booking do
       :next_of_kin_name,
       :next_of_kin_number,
       :visit,
-      :available_time_id
+      :available_time_id,
+      :user_id
     ])
     |> validate_required([
       :counselor_gender_preference,
@@ -36,7 +38,8 @@ defmodule PhoenixTherapist.Bookings.Booking do
       :next_of_kin_name,
       :next_of_kin_number,
       :visit,
-      :available_time_id
+      :available_time_id,
+      :user_id
     ])
   end
 end

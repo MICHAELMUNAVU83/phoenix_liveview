@@ -3,10 +3,22 @@ defmodule PhoenixTherapist.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :email, :string
-    field :password, :string, virtual: true, redact: true
-    field :hashed_password, :string, redact: true
-    field :confirmed_at, :naive_datetime
+    field(:email, :string)
+    field(:password, :string, virtual: true, redact: true)
+    field(:gender, :string)
+    field(:first_name, :string)
+    field(:last_name, :string)
+    field(:phone_number, :string)
+    field(:place_of_residence, :string)
+    field(:date_of_birth, :date)
+    field(:role, :string, default: "user")
+    field(:county, :string)
+    field(:marital_status, :string)
+    field(:id_number, :integer)
+    field(:occupation, :string)
+
+    field(:hashed_password, :string, redact: true)
+    field(:confirmed_at, :naive_datetime)
 
     timestamps()
   end
@@ -30,7 +42,22 @@ defmodule PhoenixTherapist.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [
+      :email,
+      :password,
+       :gender,
+      :first_name,
+      :last_name,
+      :phone_number,
+      :place_of_residence,
+      :date_of_birth,
+      :role,
+      :county,
+      :marital_status,
+      :id_number,
+      :occupation
+
+    ])
     |> validate_email()
     |> validate_password(opts)
   end
@@ -47,7 +74,7 @@ defmodule PhoenixTherapist.Accounts.User do
   defp validate_password(changeset, opts) do
     changeset
     |> validate_required([:password])
-    |> validate_length(:password, min: 12, max: 72)
+    |> validate_length(:password, min: 6, max: 72)
     # |> validate_format(:password, ~r/[a-z]/, message: "at least one lower case character")
     # |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
     # |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")

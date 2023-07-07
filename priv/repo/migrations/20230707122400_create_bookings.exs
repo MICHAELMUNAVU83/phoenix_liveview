@@ -10,6 +10,8 @@ defmodule PhoenixTherapist.Repo.Migrations.CreateBookings do
       add :next_of_kin_name, :string
       add :next_of_kin_number, :string
       add :visit, :string
+      add :available_time_id, references(:available_times, on_delete: :delete_all), null: false
+      
 
       timestamps()
     end

@@ -1,0 +1,41 @@
+<h1>Listing Available times</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.available_time_index_path(@socket, :index)}>
+    <.live_component
+      module={PhoenixTherapistWeb.AvailableTimeLive.FormComponent}
+      id={@available_time.id || :new}
+      title={@page_title}
+      action={@live_action}
+      available_time={@available_time}
+      return_to={Routes.available_time_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="available_times">
+    <%= for available_time <- @available_times do %>
+      <tr id={"available_time-#{available_time.id}"}>
+        <td><%= available_time.time %></td>
+        <td><%= available_time.date %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.available_time_show_path(@socket, :show, available_time) %></span>
+          <span><%= live_patch "Edit", to: Routes.available_time_index_path(@socket, :edit, available_time) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: available_time.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Available time", to: Routes.available_time_index_path(@socket, :new) %></span>

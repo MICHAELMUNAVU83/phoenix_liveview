@@ -2,10 +2,12 @@ defmodule PhoenixTherapistWeb.BookingLive.FormComponent do
   use PhoenixTherapistWeb, :live_component
 
   alias PhoenixTherapist.Bookings
+  alias PhoenixTherapist.AvailableTimes
 
   @impl true
   def update(%{booking: booking} = assigns, socket) do
     changeset = Bookings.change_booking(booking)
+    
 
     {:ok,
      socket

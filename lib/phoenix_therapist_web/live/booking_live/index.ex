@@ -3,6 +3,7 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
 
   alias PhoenixTherapist.Bookings
   alias PhoenixTherapist.Bookings.Booking
+  alias PhoenixTherapist.AvailableTimes
 
   @impl true
   def mount(_params, _session, socket) do
@@ -21,8 +22,13 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
   end
 
   defp apply_action(socket, :new, _params) do
+    available_times =
+      AvailableTimes.list_available_times()
+      |> Enum.map(fn available_time -> {available_time.time, available_time.id} end)
+
     socket
     |> assign(:page_title, "New Booking")
+    |> assign(:available_times, available_times)
     |> assign(:booking, %Booking{})
   end
 

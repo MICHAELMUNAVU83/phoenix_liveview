@@ -69,4 +69,8 @@
   </tbody>
 </table>
 
+
+<%= if @selected_date != "" do %>
+
 <span><%= live_patch("New Booking", to: Routes.booking_index_path(@socket, :new)) %></span>
+<%end %>

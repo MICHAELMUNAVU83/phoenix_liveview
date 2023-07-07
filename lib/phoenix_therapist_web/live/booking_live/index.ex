@@ -30,9 +30,9 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
   end
 
   defp apply_action(socket, :new, _params) do
-    available_times =
-      AvailableTimes.list_available_times()
-      |> Enum.map(fn available_time -> {available_time.time, available_time.id} end)
+    available_times = AvailableTimes.list_available_times_for_a_date(socket.assigns.selected_date)
+
+    IO.inspect(available_times)
 
     socket
     |> assign(:page_title, "New Booking")
@@ -58,6 +58,7 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
     IO.inspect(date)
 
     number_of_times_date_is_booked = length(Bookings.list_booked_times_for_a_date(date))
+    IO.inspect(number_of_times_date_is_booked)
 
     slots_available =
       if number_of_times_date_is_booked < 4 do
@@ -66,17 +67,39 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
         0
       end
 
-    IO.inspect(slots_available)
+    doctor_available_for_date = Enum.member?(AvailableTimes.list_available_dates(), date)
 
-    if number_of_times_date_is_booked == 4 do
-      {:noreply,
-       socket
-       |> put_flash(:error, "This date is fully booked")}
+    IO.inspect(doctor_available_for_date)
+
+    if doctor_available_for_date do
+      if number_of_times_date_is_booked == 4 do
+        {:noreply,
+         socket
+         |> assign(:selected_date, "")
+         |> assign(
+           :date_changeset,
+           AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
+         )
+         |> put_flash(:error, "This date is fully booked")}
+      else
+        {:noreply,
+         socket
+         |> assign(:selected_date, date)
+         |> assign(
+           :date_changeset,
+           AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
+         )
+         |> put_flash(:info, "There are #{slots_available} slots available for #{date}")}
+      end
     else
       {:noreply,
        socket
-       |> assign(:selected_date, date)
-       |> put_flash(:info, "There are #{slots_available} slots available for #{date}")}
+       |> assign(:selected_date, "")
+       |> assign(
+         :date_changeset,
+         AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{date: date})
+       )
+       |> put_flash(:error, "The doctor is not available for #{date}")}
     end
   end
 

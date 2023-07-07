@@ -7,18 +7,18 @@
     id="available_time-form"
     phx-target={@myself}
     phx-change="validate"
-    phx-submit="save">
-  
-    <%= label f, :time %>
-    <%= time_select f, :time %>
-    <%= error_tag f, :time %>
-  
-    <%= label f, :date %>
-    <%= date_select f, :date %>
-    <%= error_tag f, :date %>
-  
+    phx-submit="save"
+  >
+    <%= label(f, :time) %>
+    <%= time_select(f, :time) %>
+    <%= error_tag(f, :time) %>
+
+    <%= label(f, :date) %>
+    <%= date_input(f, :date) %>
+    <%= error_tag(f, :date) %>
+
     <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
+      <%= submit("Save", phx_disable_with: "Saving...") %>
     </div>
   </.form>
 </div>

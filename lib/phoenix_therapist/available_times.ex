@@ -21,6 +21,14 @@ defmodule PhoenixTherapist.AvailableTimes do
     Repo.all(AvailableTime)
   end
 
+  def times_for_a_date(date) do
+    query =
+      from a in AvailableTime,
+        where: a.date == ^date
+
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single available_time.
 

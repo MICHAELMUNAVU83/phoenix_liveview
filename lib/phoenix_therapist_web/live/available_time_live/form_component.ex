@@ -6,7 +6,6 @@ defmodule PhoenixTherapistWeb.AvailableTimeLive.FormComponent do
   @impl true
   def update(%{available_time: available_time} = assigns, socket) do
     changeset = AvailableTimes.change_available_time(available_time)
-   
 
     {:ok,
      socket
@@ -29,7 +28,10 @@ defmodule PhoenixTherapistWeb.AvailableTimeLive.FormComponent do
   end
 
   defp save_available_time(socket, :edit, available_time_params) do
-    case AvailableTimes.update_available_time(socket.assigns.available_time, available_time_params) do
+    case AvailableTimes.update_available_time(
+           socket.assigns.available_time,
+           available_time_params
+         ) do
       {:ok, _available_time} ->
         {:noreply,
          socket
@@ -42,15 +44,24 @@ defmodule PhoenixTherapistWeb.AvailableTimeLive.FormComponent do
   end
 
   defp save_available_time(socket, :new, available_time_params) do
-    case AvailableTimes.create_available_time(available_time_params) do
-      {:ok, _available_time} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, "Available time created successfully")
-         |> push_redirect(to: socket.assigns.return_to)}
+    times_selected = AvailableTimes.times_for_a_date(available_time_params["date"])
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
+    if length(times_selected) >= 4 do
+      {:noreply,
+       socket
+       |> put_flash(:error, "You can only have 4 available times per day")
+       |> push_redirect(to: socket.assigns.return_to)}
+    else
+      case AvailableTimes.create_available_time(available_time_params) do
+        {:ok, _available_time} ->
+          {:noreply,
+           socket
+           |> put_flash(:info, "Available time created successfully")
+           |> push_redirect(to: socket.assigns.return_to)}
+
+        {:error, %Ecto.Changeset{} = changeset} ->
+          {:noreply, assign(socket, changeset: changeset)}
+      end
     end
   end
 end

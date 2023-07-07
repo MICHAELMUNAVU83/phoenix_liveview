@@ -3,7 +3,7 @@ defmodule PhoenixTherapist.AvailableTimes.AvailableTime do
   import Ecto.Changeset
 
   schema "available_times" do
-    field :date, :date
+    field :date, :string
     field :time, :time
 
     timestamps()

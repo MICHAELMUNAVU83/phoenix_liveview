@@ -7,7 +7,15 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :bookings, list_bookings())}
+    {:ok,
+     socket
+     |> assign(:live_action, :index)
+     |> assign(:bookings, Bookings.list_bookings())
+     |> assign(:selected_date, "")
+     |> assign(
+       :date_changeset,
+       AvailableTimes.change_available_time(%AvailableTimes.AvailableTime{})
+     )}
   end
 
   @impl true
@@ -44,6 +52,32 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
     {:ok, _} = Bookings.delete_booking(booking)
 
     {:noreply, assign(socket, :bookings, list_bookings())}
+  end
+
+  def handle_event("search_available_times", %{"available_time" => %{"date" => date}}, socket) do
+    IO.inspect(date)
+
+    number_of_times_date_is_booked = length(Bookings.list_booked_times_for_a_date(date))
+
+    slots_available =
+      if number_of_times_date_is_booked < 4 do
+        4 - number_of_times_date_is_booked
+      else
+        0
+      end
+
+    IO.inspect(slots_available)
+
+    if number_of_times_date_is_booked == 4 do
+      {:noreply,
+       socket
+       |> put_flash(:error, "This date is fully booked")}
+    else
+      {:noreply,
+       socket
+       |> assign(:selected_date, date)
+       |> put_flash(:info, "There are #{slots_available} slots available for #{date}")}
+    end
   end
 
   defp list_bookings do

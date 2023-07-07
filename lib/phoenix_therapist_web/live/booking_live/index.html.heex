@@ -13,6 +13,15 @@
     />
   </.modal>
 <% end %>
+<.form let={f} for={@date_changeset} phx_submit="search_available_times">
+
+<%= label f, :date, "Date" %>
+<%= date_input f, :date, class: "form-control" %>
+
+<%= submit "Search", class: "btn btn-primary" %>
+</.form>
+
+  
 
 <table>
   <thead>

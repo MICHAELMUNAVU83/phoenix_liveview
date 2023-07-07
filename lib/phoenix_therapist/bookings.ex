@@ -21,6 +21,12 @@ defmodule PhoenixTherapist.Bookings do
     Repo.all(Booking)
   end
 
+  def list_booked_times_for_a_date(date) do
+    Repo.all(Booking)
+    |> Repo.preload(:available_time)
+    |> Enum.filter(fn booking -> booking.available_time.date == date end)
+  end
+
   @doc """
   Gets a single booking.
 

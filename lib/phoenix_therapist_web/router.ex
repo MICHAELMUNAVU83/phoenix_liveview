@@ -21,6 +21,10 @@ defmodule PhoenixTherapistWeb.Router do
     pipe_through(:browser)
 
     live("/", PageLive.Index, :index)
+  end
+
+  scope "/", PhoenixTherapistWeb do
+    pipe_through([:browser, :require_authenticated_user])
 
     live("/available_times", AvailableTimeLive.Index, :index)
     live("/available_times/new", AvailableTimeLive.Index, :new)
@@ -35,10 +39,6 @@ defmodule PhoenixTherapistWeb.Router do
 
     live("/bookings/:id", BookingLive.Show, :show)
     live("/bookings/:id/show/edit", BookingLive.Show, :edit)
-  end
-
-  scope "/", PhoenixTherapistWeb do
-    pipe_through([:browser, :require_authenticated_user])
   end
 
   # Other scopes may use custom stacks.

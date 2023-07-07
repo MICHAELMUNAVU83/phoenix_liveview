@@ -48,7 +48,9 @@ defmodule PhoenixTherapistWeb.AvailableTimeLiveTest do
     test "updates available_time in listing", %{conn: conn, available_time: available_time} do
       {:ok, index_live, _html} = live(conn, Routes.available_time_index_path(conn, :index))
 
-      assert index_live |> element("#available_time-#{available_time.id} a", "Edit") |> render_click() =~
+      assert index_live
+             |> element("#available_time-#{available_time.id} a", "Edit")
+             |> render_click() =~
                "Edit Available time"
 
       assert_patch(index_live, Routes.available_time_index_path(conn, :edit, available_time))
@@ -70,7 +72,10 @@ defmodule PhoenixTherapistWeb.AvailableTimeLiveTest do
     test "deletes available_time in listing", %{conn: conn, available_time: available_time} do
       {:ok, index_live, _html} = live(conn, Routes.available_time_index_path(conn, :index))
 
-      assert index_live |> element("#available_time-#{available_time.id} a", "Delete") |> render_click()
+      assert index_live
+             |> element("#available_time-#{available_time.id} a", "Delete")
+             |> render_click()
+
       refute has_element?(index_live, "#available_time-#{available_time.id}")
     end
   end
@@ -79,14 +84,16 @@ defmodule PhoenixTherapistWeb.AvailableTimeLiveTest do
     setup [:create_available_time]
 
     test "displays available_time", %{conn: conn, available_time: available_time} do
-      {:ok, _show_live, html} = live(conn, Routes.available_time_show_path(conn, :show, available_time))
+      {:ok, _show_live, html} =
+        live(conn, Routes.available_time_show_path(conn, :show, available_time))
 
       assert html =~ "Show Available time"
       assert html =~ available_time.time
     end
 
     test "updates available_time within modal", %{conn: conn, available_time: available_time} do
-      {:ok, show_live, _html} = live(conn, Routes.available_time_show_path(conn, :show, available_time))
+      {:ok, show_live, _html} =
+        live(conn, Routes.available_time_show_path(conn, :show, available_time))
 
       assert show_live |> element("a", "Edit") |> render_click() =~
                "Edit Available time"

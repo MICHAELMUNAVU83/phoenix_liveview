@@ -8,7 +8,15 @@ defmodule PhoenixTherapist.BookingsTest do
 
     import PhoenixTherapist.BookingsFixtures
 
-    @invalid_attrs %{counselor_gender_preference: nil, counsulted_before: nil, medical_history: nil, next_of_kin_name: nil, next_of_kin_number: nil, referred_by: nil, visit: nil}
+    @invalid_attrs %{
+      counselor_gender_preference: nil,
+      counsulted_before: nil,
+      medical_history: nil,
+      next_of_kin_name: nil,
+      next_of_kin_number: nil,
+      referred_by: nil,
+      visit: nil
+    }
 
     test "list_bookings/0 returns all bookings" do
       booking = booking_fixture()
@@ -21,7 +29,15 @@ defmodule PhoenixTherapist.BookingsTest do
     end
 
     test "create_booking/1 with valid data creates a booking" do
-      valid_attrs = %{counselor_gender_preference: "some counselor_gender_preference", counsulted_before: "some counsulted_before", medical_history: "some medical_history", next_of_kin_name: "some next_of_kin_name", next_of_kin_number: "some next_of_kin_number", referred_by: "some referred_by", visit: "some visit"}
+      valid_attrs = %{
+        counselor_gender_preference: "some counselor_gender_preference",
+        counsulted_before: "some counsulted_before",
+        medical_history: "some medical_history",
+        next_of_kin_name: "some next_of_kin_name",
+        next_of_kin_number: "some next_of_kin_number",
+        referred_by: "some referred_by",
+        visit: "some visit"
+      }
 
       assert {:ok, %Booking{} = booking} = Bookings.create_booking(valid_attrs)
       assert booking.counselor_gender_preference == "some counselor_gender_preference"
@@ -39,7 +55,16 @@ defmodule PhoenixTherapist.BookingsTest do
 
     test "update_booking/2 with valid data updates the booking" do
       booking = booking_fixture()
-      update_attrs = %{counselor_gender_preference: "some updated counselor_gender_preference", counsulted_before: "some updated counsulted_before", medical_history: "some updated medical_history", next_of_kin_name: "some updated next_of_kin_name", next_of_kin_number: "some updated next_of_kin_number", referred_by: "some updated referred_by", visit: "some updated visit"}
+
+      update_attrs = %{
+        counselor_gender_preference: "some updated counselor_gender_preference",
+        counsulted_before: "some updated counsulted_before",
+        medical_history: "some updated medical_history",
+        next_of_kin_name: "some updated next_of_kin_name",
+        next_of_kin_number: "some updated next_of_kin_number",
+        referred_by: "some updated referred_by",
+        visit: "some updated visit"
+      }
 
       assert {:ok, %Booking{} = booking} = Bookings.update_booking(booking, update_attrs)
       assert booking.counselor_gender_preference == "some updated counselor_gender_preference"

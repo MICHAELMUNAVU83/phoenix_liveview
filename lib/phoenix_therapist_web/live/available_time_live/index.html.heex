@@ -29,13 +29,30 @@
         <td><%= available_time.date %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.available_time_show_path(@socket, :show, available_time) %></span>
-          <span><%= live_patch "Edit", to: Routes.available_time_index_path(@socket, :edit, available_time) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: available_time.id, data: [confirm: "Are you sure?"] %></span>
+          <span>
+            <%= live_redirect("Show",
+              to: Routes.available_time_show_path(@socket, :show, available_time)
+            ) %>
+          </span>
+          <span>
+            <%= live_patch("Edit",
+              to: Routes.available_time_index_path(@socket, :edit, available_time)
+            ) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: available_time.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New Available time", to: Routes.available_time_index_path(@socket, :new) %></span>
+<span>
+  <%= live_patch("New Available time", to: Routes.available_time_index_path(@socket, :new)) %>
+</span>

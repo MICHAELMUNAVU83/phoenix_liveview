@@ -1,47 +1,51 @@
 <div>
   <h2><%= @title %></h2>
 
-  <.form
-    let={f}
-    for={@changeset}
-    id="booking-form"
-    phx-target={@myself}
-    phx-change="validate"
-    phx-submit="save"
-  >
-    <%= label(f, :counselor_gender_preference) %>
-    <%= text_input(f, :counselor_gender_preference) %>
-    <%= error_tag(f, :counselor_gender_preference) %>
+  <%= if @selected_date != "" do %>
+    <.form
+      let={f}
+      for={@changeset}
+      id="booking-form"
+      phx-target={@myself}
+      phx-change="validate"
+      phx-submit="save"
+    >
+      <%= label(f, :counselor_gender_preference) %>
+      <%= text_input(f, :counselor_gender_preference) %>
+      <%= error_tag(f, :counselor_gender_preference) %>
 
-    <%= label(f, :referred_by) %>
-    <%= text_input(f, :referred_by) %>
-    <%= error_tag(f, :referred_by) %>
+      <%= label(f, :referred_by) %>
+      <%= text_input(f, :referred_by) %>
+      <%= error_tag(f, :referred_by) %>
 
-    <%= label(f, :counsulted_before) %>
-    <%= text_input(f, :counsulted_before) %>
-    <%= error_tag(f, :counsulted_before) %>
+      <%= label(f, :counsulted_before) %>
+      <%= text_input(f, :counsulted_before) %>
+      <%= error_tag(f, :counsulted_before) %>
 
-    <%= label(f, :medical_history) %>
-    <%= text_input(f, :medical_history) %>
-    <%= error_tag(f, :medical_history) %>
+      <%= label(f, :medical_history) %>
+      <%= text_input(f, :medical_history) %>
+      <%= error_tag(f, :medical_history) %>
 
-    <%= label(f, :next_of_kin_name) %>
-    <%= text_input(f, :next_of_kin_name) %>
-    <%= error_tag(f, :next_of_kin_name) %>
+      <%= label(f, :next_of_kin_name) %>
+      <%= text_input(f, :next_of_kin_name) %>
+      <%= error_tag(f, :next_of_kin_name) %>
 
-    <%= label(f, :next_of_kin_number) %>
-    <%= text_input(f, :next_of_kin_number) %>
-    <%= error_tag(f, :next_of_kin_number) %>
+      <%= label(f, :next_of_kin_number) %>
+      <%= text_input(f, :next_of_kin_number) %>
+      <%= error_tag(f, :next_of_kin_number) %>
 
-    <%= label(f, :visit) %>
-    <%= text_input(f, :visit) %>
-    <%= error_tag(f, :visit) %>
+      <%= label(f, :visit) %>
+      <%= text_input(f, :visit) %>
+      <%= error_tag(f, :visit) %>
 
-    <%= label(f, :available_time) %>
-    <%= select(f, :available_time_id, @available_times, prompt: "Select a time") %>
+      <%= label(f, :available_time) %>
+      <%= select(f, :available_time_id, @available_times, prompt: "Select a time") %>
 
-    <div>
-      <%= submit("Save", phx_disable_with: "Saving...") %>
-    </div>
-  </.form>
+      <div>
+        <%= submit("Save", phx_disable_with: "Saving...") %>
+      </div>
+    </.form>
+  <% else %>
+    <p>Please select a date</p>
+  <% end %>
 </div>

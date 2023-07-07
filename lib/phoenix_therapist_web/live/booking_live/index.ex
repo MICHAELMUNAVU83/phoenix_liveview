@@ -66,7 +66,6 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
     number_of_times_date_is_booked_by_user =
       length(Accounts.list_bookings_for_user_by_date(date, socket.assigns.user.id))
 
-    IO.inspect(number_of_times_date_is_booked_by_user)
 
     available_times = AvailableTimes.list_times_selected_for_a_date(date)
 
@@ -79,7 +78,11 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
 
     doctor_available_for_date = Enum.member?(AvailableTimes.list_available_dates(), date)
 
-    if number_of_times_date_is_booked_by_user < 0 do
+
+
+    IO.inspect(number_of_times_date_is_booked_by_user)
+
+    if number_of_times_date_is_booked_by_user == 0 do
       if doctor_available_for_date do
         if number_of_times_date_is_booked == length(available_times) do
           {:noreply,

@@ -14,7 +14,6 @@
 <% end %>
 
 <ul>
-
   <li>
     <strong>Time:</strong>
     <%= @available_time.time %>
@@ -24,8 +23,12 @@
     <strong>Date:</strong>
     <%= @available_time.date %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.available_time_show_path(@socket, :edit, @available_time), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.available_time_index_path(@socket, :index) %></span>
+<span>
+  <%= live_patch("Edit",
+    to: Routes.available_time_show_path(@socket, :edit, @available_time),
+    class: "button"
+  ) %>
+</span> |
+<span><%= live_redirect("Back", to: Routes.available_time_index_path(@socket, :index)) %></span>

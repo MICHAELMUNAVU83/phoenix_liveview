@@ -4,9 +4,33 @@ defmodule PhoenixTherapistWeb.BookingLiveTest do
   import Phoenix.LiveViewTest
   import PhoenixTherapist.BookingsFixtures
 
-  @create_attrs %{counselor_gender_preference: "some counselor_gender_preference", counsulted_before: "some counsulted_before", medical_history: "some medical_history", next_of_kin_name: "some next_of_kin_name", next_of_kin_number: "some next_of_kin_number", referred_by: "some referred_by", visit: "some visit"}
-  @update_attrs %{counselor_gender_preference: "some updated counselor_gender_preference", counsulted_before: "some updated counsulted_before", medical_history: "some updated medical_history", next_of_kin_name: "some updated next_of_kin_name", next_of_kin_number: "some updated next_of_kin_number", referred_by: "some updated referred_by", visit: "some updated visit"}
-  @invalid_attrs %{counselor_gender_preference: nil, counsulted_before: nil, medical_history: nil, next_of_kin_name: nil, next_of_kin_number: nil, referred_by: nil, visit: nil}
+  @create_attrs %{
+    counselor_gender_preference: "some counselor_gender_preference",
+    counsulted_before: "some counsulted_before",
+    medical_history: "some medical_history",
+    next_of_kin_name: "some next_of_kin_name",
+    next_of_kin_number: "some next_of_kin_number",
+    referred_by: "some referred_by",
+    visit: "some visit"
+  }
+  @update_attrs %{
+    counselor_gender_preference: "some updated counselor_gender_preference",
+    counsulted_before: "some updated counsulted_before",
+    medical_history: "some updated medical_history",
+    next_of_kin_name: "some updated next_of_kin_name",
+    next_of_kin_number: "some updated next_of_kin_number",
+    referred_by: "some updated referred_by",
+    visit: "some updated visit"
+  }
+  @invalid_attrs %{
+    counselor_gender_preference: nil,
+    counsulted_before: nil,
+    medical_history: nil,
+    next_of_kin_name: nil,
+    next_of_kin_number: nil,
+    referred_by: nil,
+    visit: nil
+  }
 
   defp create_booking(_) do
     booking = booking_fixture()

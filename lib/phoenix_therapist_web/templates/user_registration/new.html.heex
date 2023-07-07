@@ -7,81 +7,67 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
-  <%= error_tag f, :email %>
+  <%= label(f, :email) %>
+  <%= email_input(f, :email, required: true) %>
+  <%= error_tag(f, :email) %>
 
-  <%= label f, :first_name %>
-  <%= text_input f, :first_name, required: true %>
-  <%= error_tag f, :first_name %>
+  <%= label(f, :first_name) %>
+  <%= text_input(f, :first_name, required: true) %>
+  <%= error_tag(f, :first_name) %>
 
-  <%= label f, :last_name %>
-  <%= text_input f, :last_name, required: true %>
-  <%= error_tag f, :last_name %>
+  <%= label(f, :last_name) %>
+  <%= text_input(f, :last_name, required: true) %>
+  <%= error_tag(f, :last_name) %>
 
+  <%= label(f, :phone_number) %>
+  <%= text_input(f, :phone_number, required: true) %>
+  <%= error_tag(f, :phone_number) %>
 
+  <%= label(f, :place_of_residence) %>
+  <%= text_input(f, :place_of_residence, required: true) %>
+  <%= error_tag(f, :place_of_residence) %>
 
-    <%= label f, :phone_number %>
-    <%= text_input f, :phone_number, required: true %>
-    <%= error_tag f, :phone_number %>
+  <%= label(f, :date_of_birth) %>
+  <%= date_input(f, :date_of_birth, required: true) %>
+  <%= error_tag(f, :date_of_birth) %>
 
+  <%= label(f, :county) %>
+  <%= text_input(f, :county, required: true) %>
 
-      <%= label f, :place_of_residence %>
-      <%= text_input f, :place_of_residence, required: true %>
-      <%= error_tag f, :place_of_residence %>
+  <%= error_tag(f, :county) %>
 
-      <%= label f, :date_of_birth %>
-      <%= date_input f, :date_of_birth, required: true %>
-      <%= error_tag f, :date_of_birth %>
+  <%= label(f, :marital_status) %>
+  <%= text_input(f, :marital_status, required: true) %>
 
-      <%= label f, :county %>
-      <%= text_input f, :county, required: true %>
+  <%= error_tag(f, :marital_status) %>
 
-        <%= error_tag f, :county %>
+  <%= label(f, :gender) %>
+  <%= text_input(f, :gender, required: true) %>
 
+  <%= error_tag(f, :gender) %>
 
-        
-      <%= label f, :marital_status %>
-      <%= text_input f, :marital_status, required: true %>
+  <%= label(f, :id_number) %>
+  <%= number_input(f, :id_number, required: true) %>
 
-        <%= error_tag f, :marital_status %>
+  <%= error_tag(f, :id_number) %>
 
+  <%= label(f, :occupation) %>
+  <%= text_input(f, :occupation, required: true) %>
 
-          <%= label f, :gender %>
-      <%= text_input f, :gender, required: true %>
+  <%= error_tag(f, :occupation) %>
 
-        <%= error_tag f, :gender %>
-
-
-
-      <%= label f, :id_number %>
-      <%= number_input f, :id_number, required: true %>
-
-        <%= error_tag f, :id_number %>
-
-
-      <%= label f, :occupation %>
-      <%= text_input f, :occupation, required: true %>
-
-        <%= error_tag f, :occupation %>
-
-
-
-
-
-
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-  <%= error_tag f, :password %>
-
-
+  <%= label(f, :password) %>
+  <%= password_input(f, :password, required: true) %>
+  <%= error_tag(f, :password) %>
 
   <div>
-    <%= submit "Register" %>
+    <%= submit("Register") %>
   </div>
 </.form>
 
 <p>
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
+  <%= link("Log in", to: Routes.user_session_path(@conn, :new)) %> | <%= link(
+    "Forgot your password?",
+    to: Routes.user_reset_password_path(@conn, :new)
+  ) %>
 </p>

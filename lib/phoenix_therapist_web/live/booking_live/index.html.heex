@@ -8,6 +8,7 @@
       title={@page_title}
       action={@live_action}
       booking={@booking}
+      selected_date={@selected_date}
       user={@user}
       available_times={@available_times}
       return_to={Routes.booking_index_path(@socket, :index)}
@@ -15,14 +16,11 @@
   </.modal>
 <% end %>
 <.form let={f} for={@date_changeset} phx_submit="search_available_times">
+  <%= label(f, :date, "Date") %>
+  <%= date_input(f, :date, class: "form-control") %>
 
-<%= label f, :date, "Date" %>
-<%= date_input f, :date, class: "form-control" %>
-
-<%= submit "Search", class: "btn btn-primary" %>
+  <%= submit("Search", class: "btn btn-primary") %>
 </.form>
-
-  
 
 <table>
   <thead>
@@ -70,8 +68,6 @@
   </tbody>
 </table>
 
-
 <%= if @selected_date != "" do %>
-
-<span><%= live_patch("New Booking", to: Routes.booking_index_path(@socket, :new)) %></span>
-<%end %>
+  <span><%= live_patch("New Booking", to: Routes.booking_index_path(@socket, :new)) %></span>
+<% end %>

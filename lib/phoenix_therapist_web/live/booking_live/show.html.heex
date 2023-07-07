@@ -14,7 +14,6 @@
 <% end %>
 
 <ul>
-
   <li>
     <strong>Counselor gender preference:</strong>
     <%= @booking.counselor_gender_preference %>
@@ -49,8 +48,9 @@
     <strong>Visit:</strong>
     <%= @booking.visit %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.booking_show_path(@socket, :edit, @booking), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.booking_index_path(@socket, :index) %></span>
+<span>
+  <%= live_patch("Edit", to: Routes.booking_show_path(@socket, :edit, @booking), class: "button") %>
+</span> |
+<span><%= live_redirect("Back", to: Routes.booking_index_path(@socket, :index)) %></span>

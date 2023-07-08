@@ -39,6 +39,13 @@ defmodule PhoenixTherapistWeb.Router do
 
     live("/bookings/:id", BookingLive.Show, :show)
     live("/bookings/:id/show/edit", BookingLive.Show, :edit)
+
+    live "/notes", NoteLive.Index, :index
+    live "/notes/new", NoteLive.Index, :new
+    live "/notes/:id/edit", NoteLive.Index, :edit
+
+    live "/notes/:id", NoteLive.Show, :show
+    live "/notes/:id/show/edit", NoteLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

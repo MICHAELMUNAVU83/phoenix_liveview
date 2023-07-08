@@ -16,6 +16,13 @@ defmodule PhoenixTherapistWeb.NoteLive.Show do
      |> assign(:note, Notes.get_note!(id))}
   end
 
+  def handle_event("delete", %{"id" => id}, socket) do
+    IO.inspect(id)
+
+    {:noreply
+     |> put_flash(:info, "Note deleted successfully.")}
+  end
+
   defp page_title(:show), do: "Show Note"
   defp page_title(:edit), do: "Edit Note"
 end

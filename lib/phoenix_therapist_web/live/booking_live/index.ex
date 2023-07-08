@@ -30,15 +30,20 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
   end
 
   defp apply_action(socket, :edit, %{"id" => id}) do
+    booking = Bookings.get_booking!(id)
+    IO.inspect(booking)
+
     socket
     |> assign(:page_title, "Edit Booking")
+    |> assign(
+      :available_times,
+      AvailableTimes.list_available_times_for_a_date(booking.available_time.date)
+    )
     |> assign(:booking, Bookings.get_booking!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     available_times = AvailableTimes.list_available_times_for_a_date(socket.assigns.selected_date)
-
-    IO.inspect(available_times)
 
     socket
     |> assign(:page_title, "New Booking")
@@ -66,7 +71,6 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
     number_of_times_date_is_booked_by_user =
       length(Accounts.list_bookings_for_user_by_date(date, socket.assigns.user.id))
 
-
     available_times = AvailableTimes.list_times_selected_for_a_date(date)
 
     slots_available =
@@ -77,8 +81,6 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
       end
 
     doctor_available_for_date = Enum.member?(AvailableTimes.list_available_dates(), date)
-
-
 
     IO.inspect(number_of_times_date_is_booked_by_user)
 

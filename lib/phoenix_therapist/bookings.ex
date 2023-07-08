@@ -41,7 +41,7 @@ defmodule PhoenixTherapist.Bookings do
       ** (Ecto.NoResultsError)
 
   """
-  def get_booking!(id), do: Repo.get!(Booking, id)
+  def get_booking!(id), do: Repo.get!(Booking, id) |> Repo.preload(:available_time)
 
   @doc """
   Creates a booking.

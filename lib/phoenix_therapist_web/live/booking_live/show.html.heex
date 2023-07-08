@@ -1,13 +1,13 @@
 <h1>Show Booking</h1>
 
-<%= if @live_action in [:edit] do %>
+<%= if @live_action in [:addnotes, :editnote] do %>
   <.modal return_to={Routes.booking_show_path(@socket, :show, @booking)}>
     <.live_component
-      module={PhoenixTherapistWeb.BookingLive.FormComponent}
+      module={PhoenixTherapistWeb.BookingLive.AddNotesFormComponent}
       id={@booking.id}
       title={@page_title}
       action={@live_action}
-      booking={@booking}
+      note={@note}
       return_to={Routes.booking_show_path(@socket, :show, @booking)}
     />
   </.modal>
@@ -50,7 +50,48 @@
   </li>
 </ul>
 
-<span>
-  <%= live_patch("Edit", to: Routes.booking_show_path(@socket, :edit, @booking), class: "button") %>
-</span> |
 <span><%= live_redirect("Back", to: Routes.booking_index_path(@socket, :index)) %></span>
+
+<h2>Notes</h2>
+
+<%= live_redirect("Add Note", to: Routes.booking_show_path(@socket, :addnotes, @booking)) %>
+
+<h1 class="font-bold text-center">
+  Notes
+</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="notes">
+    <%= for note <- @notes do %>
+      <tr id={"note-#{note.id}"}>
+        <td><%= note.description %></td>
+
+        <td>
+          <span>
+            <%= live_redirect("Show", to: Routes.note_show_path(@socket, :show, note)) %>
+          </span>
+          <span>
+            <%= live_patch("Edit",
+              to: Routes.booking_show_path(@socket, :editnote, @booking, note)
+            ) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: note.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

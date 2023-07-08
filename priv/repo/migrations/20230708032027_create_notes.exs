@@ -4,6 +4,7 @@ defmodule PhoenixTherapist.Repo.Migrations.CreateNotes do
   def change do
     create table(:notes) do
       add :description, :string
+      add :booking_id, references(:bookings, on_delete: :nothing)
 
       timestamps()
     end

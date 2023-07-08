@@ -8,16 +8,16 @@ defmodule PhoenixTherapistWeb.BookingLive.Show do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok,
-     socket
-     |> assign(:notes, Notes.list_notes())}
+    {:ok, socket}
   end
 
   @impl true
   def handle_params(params, _uri, socket) do
-    IO.inspect(socket.assigns.live_action)
+    {booking_id, _} = Integer.parse(params["id"])
+    IO.inspect(booking_id)
 
-    IO.inspect(params)
+    notes = Notes.list_notes_for_booking(booking_id)
+    IO.inspect(notes)
 
     note =
       if params["note_id"] do
@@ -30,6 +30,7 @@ defmodule PhoenixTherapistWeb.BookingLive.Show do
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
      |> assign(:booking, Bookings.get_booking!(params["id"]))
+     |> assign(:notes, notes)
      |> assign(:note, note)}
   end
 
@@ -39,7 +40,7 @@ defmodule PhoenixTherapistWeb.BookingLive.Show do
 
     {:noreply,
      socket
-     |> assign(:notes, Notes.list_notes())
+     |> assign(:notes, Notes.list_notes_for_booking(socket.assigns.booking.id))
      |> put_flash(:info, "Note deleted successfully")}
   end
 

@@ -17,8 +17,15 @@ defmodule PhoenixTherapist.Notes do
       [%Note{}, ...]
 
   """
+
   def list_notes do
     Repo.all(Note)
+  end
+
+  def list_notes_for_booking(booking_id) do
+    Repo.all(Note)
+    |> Repo.preload(:booking)
+    |> Enum.filter(fn note -> note.booking_id == booking_id end)
   end
 
   @doc """

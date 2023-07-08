@@ -13,6 +13,8 @@
     <%= text_input(f, :description) %>
     <%= error_tag(f, :description) %>
 
+    <%= hidden_input(f, :booking_id, value: @booking.id) %>
+
     <div>
       <%= submit("Save", phx_disable_with: "Saving...") %>
     </div>

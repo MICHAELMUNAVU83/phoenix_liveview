@@ -4,6 +4,7 @@ defmodule PhoenixTherapist.Notes.Note do
 
   schema "notes" do
     field :description, :string
+    belongs_to :booking, PhoenixTherapist.Bookings.Booking
 
     timestamps()
   end
@@ -11,7 +12,7 @@ defmodule PhoenixTherapist.Notes.Note do
   @doc false
   def changeset(note, attrs) do
     note
-    |> cast(attrs, [:description])
-    |> validate_required([:description])
+    |> cast(attrs, [:description, :booking_id])
+    |> validate_required([:description, :booking_id])
   end
 end

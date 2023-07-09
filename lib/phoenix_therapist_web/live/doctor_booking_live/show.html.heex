@@ -1,0 +1,84 @@
+<h1>Show Booking</h1>
+
+<ul>
+  <li>
+    <strong>Counselor gender preference:</strong>
+    <%= @booking.counselor_gender_preference %>
+  </li>
+
+  <li>
+    <strong>Referred by:</strong>
+    <%= @booking.referred_by %>
+  </li>
+
+  <li>
+    <strong>Counsulted before:</strong>
+    <%= @booking.counsulted_before %>
+  </li>
+
+  <li>
+    <strong>Medical history:</strong>
+    <%= @booking.medical_history %>
+  </li>
+
+  <li>
+    <strong>Next of kin name:</strong>
+    <%= @booking.next_of_kin_name %>
+  </li>
+
+  <li>
+    <strong>Next of kin number:</strong>
+    <%= @booking.next_of_kin_number %>
+  </li>
+
+  <li>
+    <strong>Visit:</strong>
+    <%= @booking.visit %>
+  </li>
+</ul>
+
+<span><%= live_redirect("Back", to: Routes.booking_index_path(@socket, :index)) %></span>
+
+<h2>Notes</h2>
+
+<%= live_redirect("Add Note", to: Routes.booking_show_path(@socket, :addnotes, @booking)) %>
+
+<h1 class="font-bold text-center">
+  Notes
+</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="notes">
+    <%= for note <- @notes do %>
+      <tr id={"note-#{note.id}"}>
+        <td><%= note.description %></td>
+
+        <td>
+          <span>
+            <%= live_redirect("Show", to: Routes.note_show_path(@socket, :show, note)) %>
+          </span>
+          <span>
+            <%= live_patch("Edit",
+              to: Routes.booking_show_path(@socket, :editnote, @booking, note)
+            ) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: note.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

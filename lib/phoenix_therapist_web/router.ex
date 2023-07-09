@@ -32,6 +32,8 @@ defmodule PhoenixTherapistWeb.Router do
 
     live("/available_times/:id", AvailableTimeLive.Show, :show)
     live("/available_times/:id/show/edit", AvailableTimeLive.Show, :edit)
+    live("/doctor_bookings", DoctorBookingLive.Index, :index)
+    live("/doctor_bookings/:id", DoctorBookingLive.Show, :show)
 
     live("/bookings", BookingLive.Index, :index)
     live("/bookings/new", BookingLive.Index, :new)

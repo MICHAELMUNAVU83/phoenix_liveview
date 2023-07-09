@@ -15,7 +15,7 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
     {:ok,
      socket
      |> assign(:live_action, :index)
-     |> assign(:bookings, Bookings.list_bookings())
+     |> assign(:bookings, Bookings.list_bookings_for_a_user(user.id))
      |> assign(:selected_date, "")
      |> assign(:user, user)
      |> assign(
@@ -62,7 +62,8 @@ defmodule PhoenixTherapistWeb.BookingLive.Index do
     booking = Bookings.get_booking!(id)
     {:ok, _} = Bookings.delete_booking(booking)
 
-    {:noreply, assign(socket, :bookings, list_bookings())}
+    {:noreply,
+     assign(socket, :bookings, Bookings.list_bookings_for_a_user(socket.assigns.user.id))}
   end
 
   def handle_event("search_available_times", %{"available_time" => %{"date" => date}}, socket) do

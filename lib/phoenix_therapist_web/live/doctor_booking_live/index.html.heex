@@ -1,0 +1,37 @@
+<div class=" pt-12 mx-auto inter-regular flex flex-col">
+  <div class="bg-[#31786B] -mb-8  text-xl rounded-md z8   text-white w-[90%]  mx-auto flex items-center p-4 py-8  h-[80px]">
+    All Bookings
+  </div>
+  <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex flex-col gap-4  shadow-md    shadow-gray-300">
+    <table class="w-[100%] text-center">
+      <thead class="bg-[#EFA286] text-white h-[40px]">
+        <tr>
+          <th>User</th>
+          <th>Time</th>
+
+          <th>Date</th>
+
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="doctor_bookings" class="bg-[#FEFAF9] ">
+        <%= for booking <- @bookings do %>
+          <tr id={"booking_" <> Integer.to_string(booking.id)}>
+            <td class="py-2"><%= booking.id %></td>
+            <td class="py-2"><%= booking.user.first_name %></td>
+            <td class="py-2"><%= booking.available_time.time %></td>
+            <td class="py-2"><%= booking.available_time.date %></td>
+
+            <td class="py-2">
+              <div class="flex items-center justify-center gap-2">
+                <%= live_redirect("Show",
+                  to: Routes.doctor_booking_show_path(@socket, :show, booking)
+                ) %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

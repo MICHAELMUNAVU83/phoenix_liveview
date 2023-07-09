@@ -1,4 +1,4 @@
-defmodule PhoenixTherapistWeb.BookingLive.Show do
+defmodule PhoenixTherapistWeb.DoctorBookingLive.Show do
   use PhoenixTherapistWeb, :doctor_live_view
 
   alias PhoenixTherapist.Bookings
@@ -13,9 +13,12 @@ defmodule PhoenixTherapistWeb.BookingLive.Show do
 
   @impl true
   def handle_params(params, _uri, socket) do
+    IO.inspect(params)
     {booking_id, _} = Integer.parse(params["id"])
+    IO.inspect(booking_id)
 
     notes = Notes.list_notes_for_booking(booking_id)
+    IO.inspect(notes)
 
     note =
       if params["note_id"] do
@@ -43,7 +46,4 @@ defmodule PhoenixTherapistWeb.BookingLive.Show do
   end
 
   defp page_title(:show), do: "Show Booking"
-  defp page_title(:edit), do: "Edit Booking"
-  defp page_title(:addnotes), do: "Add Note"
-  defp page_title(:editnote), do: "Edit Note"
 end

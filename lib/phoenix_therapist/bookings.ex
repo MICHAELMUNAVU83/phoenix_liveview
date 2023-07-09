@@ -17,8 +17,16 @@ defmodule PhoenixTherapist.Bookings do
       [%Booking{}, ...]
 
   """
+
+  def list_bookings_for_a_user(user_id) do
+    Repo.all(Booking)
+    |> Enum.filter(fn booking -> booking.user_id == user_id end)
+  end
+
   def list_bookings do
     Repo.all(Booking)
+    |> Repo.preload(:available_time)
+    |> Repo.preload(:user)
   end
 
   def list_booked_times_for_a_date(date) do
@@ -41,7 +49,8 @@ defmodule PhoenixTherapist.Bookings do
       ** (Ecto.NoResultsError)
 
   """
-  def get_booking!(id), do: Repo.get!(Booking, id) |> Repo.preload(:available_time)
+  def get_booking!(id),
+    do: Repo.get!(Booking, id) |> Repo.preload(:available_time) |> Repo.preload(:user)
 
   @doc """
   Creates a booking.

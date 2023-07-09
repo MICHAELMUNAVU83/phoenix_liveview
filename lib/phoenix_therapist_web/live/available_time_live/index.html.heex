@@ -16,6 +16,13 @@
     Available Times
   </div>
   <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex flex-col gap-4  shadow-md    shadow-gray-300">
+    <div class="flex justify-start">
+      <%= live_patch("New Available time",
+        to: Routes.available_time_index_path(@socket, :new),
+        class:
+          "h-[40px]  px-4 py-2 bg-[#31786B] text-white rounded-md flex items-center justify-center"
+      ) %>
+    </div>
     <table class="w-[100%] text-center">
       <thead class="bg-[#EFA286] text-white h-[40px]">
         <tr>
@@ -61,9 +68,5 @@
         <% end %>
       </tbody>
     </table>
-
-    <span>
-      <%= live_patch("New Available time", to: Routes.available_time_index_path(@socket, :new)) %>
-    </span>
   </div>
 </div>

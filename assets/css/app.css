@@ -166,6 +166,10 @@ html {
   background-image: url("/images/whybg.jpeg");
 }
 
+.bookingbg {
+  background-image: url("/images/whybg.jpeg");
+}
+
 .z8 {
   z-index: 8 !important;
 }

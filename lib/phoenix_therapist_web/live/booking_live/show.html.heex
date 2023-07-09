@@ -1,84 +1,127 @@
-<h1>Show Booking</h1>
+<div class=" pt-12 mx-auto inter-regular flex flex-col">
+  <div class="bg-[#31786B] -mb-8  text-xl rounded-md z8   text-white w-[90%]  mx-auto flex items-center p-4 py-8  h-[80px]">
+    Booking Details
+  </div>
+  <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex justify-between  shadow-md    shadow-gray-300">
+    <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
+      <p class="uppercase underline text-2xl font-semibold">
+        User Information
+      </p>
+      <ul>
+        <li>
+          <strong>Name:</strong>
+          <%= @booking.user.first_name <> " " <> @booking.user.last_name %>
+        </li>
 
-<ul>
-  <li>
-    <strong>Counselor gender preference:</strong>
-    <%= @booking.counselor_gender_preference %>
-  </li>
+        <li>
+          <strong>Age:</strong>
+          <%= Date.utc_today().year -
+            String.to_integer(String.slice(@booking.user.date_of_birth, 0, 4)) %>
+        </li>
 
-  <li>
-    <strong>Referred by:</strong>
-    <%= @booking.referred_by %>
-  </li>
+        <li>
+          <strong>County:</strong>
+          <%= @booking.user.county %>
+        </li>
 
-  <li>
-    <strong>Counsulted before:</strong>
-    <%= @booking.counsulted_before %>
-  </li>
+        <li>
+          <strong>Place of residence:</strong>
+          <%= @booking.user.place_of_residence %>
+        </li>
 
-  <li>
-    <strong>Medical history:</strong>
-    <%= @booking.medical_history %>
-  </li>
+        <li>
+          <strong>Occupation:</strong>
+          <%= @booking.user.occupation %>
+        </li>
 
-  <li>
-    <strong>Next of kin name:</strong>
-    <%= @booking.next_of_kin_name %>
-  </li>
+        <li>
+          <strong>Gender:</strong>
+          <%= @booking.user.gender %>
+        </li>
 
-  <li>
-    <strong>Next of kin number:</strong>
-    <%= @booking.next_of_kin_number %>
-  </li>
+        <li>
+          <strong>Phone Number:</strong>
+          <%= @booking.user.phone_number %>
+        </li>
+      </ul>
+    </div>
+    <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
+      <p class="uppercase underline text-2xl font-semibold">
+        Booking Information
+      </p>
 
-  <li>
-    <strong>Visit:</strong>
-    <%= @booking.visit %>
-  </li>
-</ul>
+      <ul>
+        <li>
+          <strong>Counselor gender preference:</strong>
+          <%= @booking.counselor_gender_preference %>
+        </li>
 
-<span><%= live_redirect("Back", to: Routes.booking_index_path(@socket, :index)) %></span>
+        <%= if @booking.referred_by do %>
+          <li>
+            <strong>Referred by:</strong>
+            <%= @booking.referred_by %>
+          </li>
+        <% end %>
 
-<h2>Notes</h2>
+        <li>
+          <strong>Counsulted before:</strong>
+          <%= @booking.counsulted_before %>
+        </li>
+        <%= if @booking.medical_history do %>
+          <li>
+            <strong>Medical history:</strong>
+            <%= @booking.medical_history %>
+          </li>
+        <% end %>
 
-<%!-- <%= live_redirect("Add Note", to: Routes.booking_show_path(@socket, :addnotes, @booking)) %> --%>
+        <li>
+          <strong>Next of kin name:</strong>
+          <%= @booking.next_of_kin_name %>
+        </li>
 
-<h1 class="font-bold text-center">
-  Notes
-</h1>
+        <li>
+          <strong>Next of kin number:</strong>
+          <%= @booking.next_of_kin_number %>
+        </li>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
+        <li>
+          <strong>Visit:</strong>
+          <%= @booking.visit %>
+        </li>
+      </ul>
+    </div>
+    <div class="flex flex-col w-[30%] p-4">
+      <p class="uppercase underline text-2xl font-semibold">
+        Appointment  Information
+      </p>
+      <ul>
+        <li>
+          <strong>Time:</strong>
+          <%= @booking.available_time.time %>
+        </li>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="notes">
+        <li>
+          <strong>Date:</strong>
+          <%= @booking.available_time.date %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="w-[95%] mb-12 mx-auto mt-8 ">
+  <h2 class="text-2xl uppercase underline text-center  text-gray-500 font-semibold">
+    Doctor Notes for this Appointment
+  </h2>
+
+  <div class="w-[100%] grid grid-cols-2">
     <%= for note <- @notes do %>
-      <tr id={"note-#{note.id}"}>
-        <td><%= note.description %></td>
-
-        <td>
-          <span>
-            <%= live_redirect("Show", to: Routes.note_show_path(@socket, :show, note)) %>
-          </span>
-          <%!-- <span>
-            <%= live_patch("Edit",
-              to: Routes.booking_show_path(@socket, :editnote, @booking, note)
-            ) %>
-          </span> --%>
-          <span>
-            <%= link("Delete",
-              to: "#",
-              phx_click: "delete",
-              phx_value_id: note.id,
-              data: [confirm: "Are you sure?"]
-            ) %>
-          </span>
-        </td>
-      </tr>
+      <div class="w-[90%] mx-auto flex flex-col justify-between shadow-md h-[200px] shadow-gray-200  p-4 mt-8 hover:scale-105 transition-all ease-in-out cursor-pointer duration-500">
+        <div class="flex flex-col gap-1">
+          <p class="text-xl font-semibold">Note</p>
+          <p class=" text-gray-400"><%= note.description %></p>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

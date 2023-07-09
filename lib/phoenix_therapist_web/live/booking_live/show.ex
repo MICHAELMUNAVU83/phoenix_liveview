@@ -1,5 +1,5 @@
 defmodule PhoenixTherapistWeb.BookingLive.Show do
-  use PhoenixTherapistWeb, :doctor_live_view
+  use PhoenixTherapistWeb, :live_view
 
   alias PhoenixTherapist.Bookings
   alias PhoenixTherapist.Bookings.Booking

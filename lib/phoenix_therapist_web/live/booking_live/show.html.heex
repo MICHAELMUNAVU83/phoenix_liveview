@@ -2,110 +2,118 @@
   <div class="bg-[#31786B] -mb-8  text-xl rounded-md z8   text-white w-[90%]  mx-auto flex items-center p-4 py-8  h-[80px]">
     Booking Details
   </div>
-  <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex justify-between  shadow-md    shadow-gray-300">
-    <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
-      <p class="uppercase underline text-2xl font-semibold">
-        User Information
-      </p>
-      <ul>
-        <li>
-          <strong>Name:</strong>
-          <%= @booking.user.first_name <> " " <> @booking.user.last_name %>
-        </li>
-
-        <li>
-          <strong>Age:</strong>
-          <%= Date.utc_today().year -
-            String.to_integer(String.slice(@booking.user.date_of_birth, 0, 4)) %>
-        </li>
-
-        <li>
-          <strong>County:</strong>
-          <%= @booking.user.county %>
-        </li>
-
-        <li>
-          <strong>Place of residence:</strong>
-          <%= @booking.user.place_of_residence %>
-        </li>
-
-        <li>
-          <strong>Occupation:</strong>
-          <%= @booking.user.occupation %>
-        </li>
-
-        <li>
-          <strong>Gender:</strong>
-          <%= @booking.user.gender %>
-        </li>
-
-        <li>
-          <strong>Phone Number:</strong>
-          <%= @booking.user.phone_number %>
-        </li>
-      </ul>
-    </div>
-    <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
-      <p class="uppercase underline text-2xl font-semibold">
-        Booking Information
-      </p>
-
-      <ul>
-        <li>
-          <strong>Counselor gender preference:</strong>
-          <%= @booking.counselor_gender_preference %>
-        </li>
-
-        <%= if @booking.referred_by do %>
+  <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex flex-col shadow-md    shadow-gray-300">
+    <div class="flex justify-between">
+      <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
+        <p class="uppercase underline text-2xl font-semibold">
+          User Information
+        </p>
+        <ul>
           <li>
-            <strong>Referred by:</strong>
-            <%= @booking.referred_by %>
+            <strong>Name:</strong>
+            <%= @booking.user.first_name <> " " <> @booking.user.last_name %>
           </li>
-        <% end %>
 
-        <li>
-          <strong>Counsulted before:</strong>
-          <%= @booking.counsulted_before %>
-        </li>
-        <%= if @booking.medical_history do %>
           <li>
-            <strong>Medical history:</strong>
-            <%= @booking.medical_history %>
+            <strong>Age:</strong>
+            <%= Date.utc_today().year -
+              String.to_integer(String.slice(@booking.user.date_of_birth, 0, 4)) %>
           </li>
-        <% end %>
 
-        <li>
-          <strong>Next of kin name:</strong>
-          <%= @booking.next_of_kin_name %>
-        </li>
+          <li>
+            <strong>County:</strong>
+            <%= @booking.user.county %>
+          </li>
 
-        <li>
-          <strong>Next of kin number:</strong>
-          <%= @booking.next_of_kin_number %>
-        </li>
+          <li>
+            <strong>Place of residence:</strong>
+            <%= @booking.user.place_of_residence %>
+          </li>
 
-        <li>
-          <strong>Visit:</strong>
-          <%= @booking.visit %>
-        </li>
-      </ul>
+          <li>
+            <strong>Occupation:</strong>
+            <%= @booking.user.occupation %>
+          </li>
+
+          <li>
+            <strong>Gender:</strong>
+            <%= @booking.user.gender %>
+          </li>
+
+          <li>
+            <strong>Phone Number:</strong>
+            <%= @booking.user.phone_number %>
+          </li>
+        </ul>
+      </div>
+      <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
+        <p class="uppercase underline text-2xl font-semibold">
+          Booking Information
+        </p>
+
+        <ul>
+          <li>
+            <strong>Counselor gender preference:</strong>
+            <%= @booking.counselor_gender_preference %>
+          </li>
+
+          <%= if @booking.referred_by do %>
+            <li>
+              <strong>Referred by:</strong>
+              <%= @booking.referred_by %>
+            </li>
+          <% end %>
+
+          <li>
+            <strong>Counsulted before:</strong>
+            <%= @booking.counsulted_before %>
+          </li>
+          <%= if @booking.medical_history do %>
+            <li>
+              <strong>Medical history:</strong>
+              <%= @booking.medical_history %>
+            </li>
+          <% end %>
+
+          <li>
+            <strong>Next of kin name:</strong>
+            <%= @booking.next_of_kin_name %>
+          </li>
+
+          <li>
+            <strong>Next of kin number:</strong>
+            <%= @booking.next_of_kin_number %>
+          </li>
+
+          <li>
+            <strong>Visit:</strong>
+            <%= @booking.visit %>
+          </li>
+        </ul>
+      </div>
+      <div class="flex flex-col w-[30%] p-4">
+        <p class="uppercase underline text-2xl font-semibold">
+          Appointment  Information
+        </p>
+        <ul>
+          <li>
+            <strong>Time:</strong>
+            <%= @booking.available_time.time %>
+          </li>
+
+          <li>
+            <strong>Date:</strong>
+            <%= @booking.available_time.date %>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="flex flex-col w-[30%] p-4">
-      <p class="uppercase underline text-2xl font-semibold">
-        Appointment  Information
-      </p>
-      <ul>
-        <li>
-          <strong>Time:</strong>
-          <%= @booking.available_time.time %>
-        </li>
-
-        <li>
-          <strong>Date:</strong>
-          <%= @booking.available_time.date %>
-        </li>
-      </ul>
-    </div>
+    <%= live_redirect  to: Routes.booking_index_path(@socket, :index) do %>
+      <div class="flex items-center ">
+        <img src="/images/orangearrow.png" alt="" class="w-[50px]  object-contain h-[20px]" />
+        <p class="text-gray-500">Back</p>
+      </div>
+    <% end %>
   </div>
 </div>
 

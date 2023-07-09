@@ -36,6 +36,16 @@ defmodule PhoenixTherapist.Bookings do
     |> Enum.filter(fn booking -> booking.available_time.date == date end)
   end
 
+  def search_bookings_by_user_name(name) do
+    query =
+      from(b in Booking,
+        join: u in assoc(b, :user),
+        where: fragment("? LIKE ?", u.first_name, ^"%#{name}%")
+      )
+
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single booking.
 

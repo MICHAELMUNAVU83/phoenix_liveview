@@ -3,6 +3,7 @@ defmodule PhoenixTherapistWeb.DoctorBookingLive.Index do
 
   alias PhoenixTherapist.Bookings
   alias PhoenixTherapist.Accounts
+  alias PhoenixTherapist.Bookings.Booking
 
   def mount(_params, session, socket) do
     user = Accounts.get_user_by_session_token(session["user_token"])
@@ -13,6 +14,7 @@ defmodule PhoenixTherapistWeb.DoctorBookingLive.Index do
      socket
      |> assign(:live_action, :index)
      |> assign(:bookings, Bookings.list_bookings())
+     |> assign(:changeset, Bookings.change_booking(%Booking{}))
      |> assign(:user, user)}
   end
 
@@ -24,5 +26,17 @@ defmodule PhoenixTherapistWeb.DoctorBookingLive.Index do
     socket
     |> assign(:page_title, "Listing Bookings")
     |> assign(:booking, nil)
+  end
+
+  def handle_event("search", %{"booking" => booking_params}, socket) do
+    if booking_params["search"] == "" do
+      {:noreply,
+       socket
+       |> assign(:bookings, Bookings.list_bookings())}
+    else
+      {:noreply,
+       socket
+       |> assign(:bookings, Bookings.search_bookings_by_user_name(booking_params["search"]))}
+    end
   end
 end

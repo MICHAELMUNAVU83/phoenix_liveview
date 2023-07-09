@@ -4,7 +4,7 @@ defmodule PhoenixTherapist.AvailableTimes.AvailableTime do
 
   schema "available_times" do
     field(:date, :string)
-    field(:time, :time)
+    field(:time, :string)
     has_many(:bookings, PhoenixTherapist.Bookings.Booking)
 
     timestamps()

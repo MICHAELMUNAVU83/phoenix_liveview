@@ -24,7 +24,7 @@
             <%= text_input(f, :first_name,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :first_name) %>
@@ -36,7 +36,7 @@
             <%= text_input(f, :last_name,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :last_name) %>
@@ -50,7 +50,7 @@
             <%= text_input(f, :id_number,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :id_number) %>
@@ -62,7 +62,7 @@
             <%= text_input(f, :phone_number,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :phone_number) %>
@@ -128,7 +128,7 @@
               prompt: "Select County",
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :county) %>
@@ -139,7 +139,7 @@
             <%= text_input(f, :place_of_residence,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :place_of_residence) %>
@@ -152,7 +152,7 @@
             <%= date_input(f, :date_of_birth,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :date_of_birth) %>
@@ -165,7 +165,7 @@
               prompt: "Select Marital Status",
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :marital_status) %>
@@ -180,7 +180,7 @@
               prompt: "Select Gender",
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :gender) %>
@@ -191,7 +191,7 @@
             <%= text_input(f, :occupation,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :occupation) %>
@@ -202,10 +202,10 @@
         <div class="flex justify-between my-1 w-[100%]">
           <div class="flex flex-col w-[48%]">
             <%= label(f, :email) %>
-            <%= number_input(f, :email,
+            <%= email_input(f, :email,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :email) %>
@@ -217,7 +217,7 @@
             <%= password_input(f, :password,
               required: true,
               class:
-                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+                "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
             ) %>
             <p class="pt-5">
               <%= error_tag(f, :password) %>

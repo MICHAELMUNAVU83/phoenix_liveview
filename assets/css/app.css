@@ -151,12 +151,14 @@
   background-image: url("/images/whybg.jpeg");
 }
 
-
 .homebg {
   background-image: url("/images/whybg.jpeg");
 }
 
-.yearsbg{
+.yearsbg {
   background-image: url("/images/whybg.jpeg");
- 
+}
+
+.z8 {
+  z-index: 8 !important;
 }

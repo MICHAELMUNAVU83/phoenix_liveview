@@ -1,24 +1,44 @@
 <div>
-  <h2><%= @title %></h2>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+    Add a Time And Date to your Availability
+  </h2>
 
-  <.form
-    let={f}
-    for={@changeset}
-    id="available_time-form"
-    phx-target={@myself}
-    phx-change="validate"
-    phx-submit="save"
-  >
-    <%= label(f, :time) %>
-    <%= time_select(f, :time) %>
-    <%= error_tag(f, :time) %>
+  <div class="w-[60%] mx-auto flex flex-col  ">
+    <.form
+      let={f}
+      for={@changeset}
+      id="available_time-form"
+      phx-target={@myself}
+      phx-change="validate"
+      phx-submit="save"
+    >
+      <div class="flex justify-between w-[100%] items-center">
+        <div class="flex flex-col w-[48%]  ">
+          <%= label(f, :time) %>
+          <%= select(f, :time, ["8:00 am", "10:00 am", "12:00 am", "2:00 pm", "4:00 pm"],
+            prompt: "Select a time",
+            class:
+              "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+          ) %>
+          <%= error_tag(f, :time) %>
+        </div>
 
-    <%= label(f, :date) %>
-    <%= date_input(f, :date) %>
-    <%= error_tag(f, :date) %>
+        <div class="flex flex-col  w-[48%]">
+          <%= label(f, :date) %>
+          <%= date_input(f, :date,
+            class:
+              "w-[100%] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+          ) %>
+          <%= error_tag(f, :date) %>
+        </div>
+      </div>
 
-    <div>
-      <%= submit("Save", phx_disable_with: "Saving...") %>
-    </div>
-  </.form>
+      <div class="flex justify-center items-center my-4">
+        <%= submit("Save",
+          phx_disable_with: "Saving...",
+          class: " h-[40px] px-8  bg-[#31786B]  text-[#FEFAF9]"
+        ) %>
+      </div>
+    </.form>
+  </div>
 </div>

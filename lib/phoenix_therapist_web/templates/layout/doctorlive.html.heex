@@ -1,0 +1,27 @@
+<main>
+  <%= if @flash["info"] do %>
+    <p class="alert alert-info" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
+      <%= live_flash(@flash, :info) %>
+    </p>
+  <% end %>
+
+  <%= if @flash["error"] do %>
+    <p class="alert alert-danger" role="alert" phx-click="lv:clear-flash" phx-value-key="error">
+      <%= live_flash(@flash, :error) %>
+    </p>
+  <% end %>
+
+  <div class="w-[250px] bg-[#31786B] text-[#FEFAF9] fixed pt-24 flex  flex-col items-center h-[100vh]">
+    <p>
+      logo here
+    </p>
+    <p class="w-[80%] mx-auto h-[1px] bg-[#FEFAF9] my-4" />
+    <div class="flex flex-col items-center gap-0">
+      hbjnmk
+    </div>
+  </div>
+
+  <div class="ml-[250px] p-4">
+    <%= @inner_content %>
+  </div>
+</main>

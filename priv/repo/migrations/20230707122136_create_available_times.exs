@@ -3,7 +3,7 @@ defmodule PhoenixTherapist.Repo.Migrations.CreateAvailableTimes do
 
   def change do
     create table(:available_times) do
-      add :time, :time
+      add :time, :string
       add :date, :string
 
       timestamps()

@@ -1,5 +1,5 @@
 defmodule PhoenixTherapistWeb.AvailableTimeLive.Show do
-  use PhoenixTherapistWeb, :live_view
+  use PhoenixTherapistWeb, :doctor_live_view
 
   alias PhoenixTherapist.AvailableTimes
 

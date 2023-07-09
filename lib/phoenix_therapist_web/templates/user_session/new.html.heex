@@ -1,29 +1,66 @@
-<h1>Log in</h1>
-
-<.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
-  <%= if @error_message do %>
-    <div class="alert alert-danger">
-      <p><%= @error_message %></p>
-    </div>
-  <% end %>
-
-  <%= label(f, :email) %>
-  <%= email_input(f, :email, required: true) %>
-
-  <%= label(f, :password) %>
-  <%= password_input(f, :password, required: true) %>
-
-  <%= label(f, :remember_me, "Keep me logged in for 60 days") %>
-  <%= checkbox(f, :remember_me) %>
-
-  <div>
-    <%= submit("Log in") %>
+<div class="bg-[#FEFAF9] h-[100vh] flex justify-center items-center">
+  <div class="w-[50%] h-[100%]">
+    <img src="/images/chooseus.jpeg" alt="chooseus" class="w-[100%] h-[100%] object-cover" />
   </div>
-</.form>
+  <div class="w-[50%] h-[100%] flex flex-col justify-between ">
+    <div class="flex justify-end">
+      <div class="w-0 h-[50] 
+  border-t-[50] border-t-transparent
+  border-r-[75px] border-r-[#31786B]
+  border-b-[50] border-b-transparent">
+      </div>
+    </div>
+    <div class="flex justify-center flex-col w-[80%] mx-auto gap-8  h-[100%]">
+      <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
+        <%= if @error_message do %>
+          <div class="alert alert-danger">
+            <p><%= @error_message %></p>
+          </div>
+        <% end %>
 
-<p>
-  <%= link("Register", to: Routes.user_registration_path(@conn, :new)) %> | <%= link(
-    "Forgot your password?",
-    to: Routes.user_reset_password_path(@conn, :new)
-  ) %>
-</p>
+        <p class="text-center  text-2xl my-4 uppercase font-bold">
+          Login to your account
+        </p>
+
+        <div class="flex flex-col w-[100%]">
+          <%= label(f, :email) %>
+          <%= email_input(f, :email,
+            required: true,
+            class:
+              "w-[100%px] h-[45px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+          ) %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= label(f, :password) %>
+          <%= password_input(f, :password,
+            required: true,
+            class:
+              "w-[100%px] h-[45px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+          ) %>
+        </div>
+
+        <%= label(f, :remember_me, "Keep me logged in for 60 days") %>
+        <%= checkbox(f, :remember_me) %>
+
+        <div class="flex justify-center items-center hover:scale-105 transition-all duration-500 ease-in-out mt-4">
+          <%= submit("Log In To Your Account",
+            class: " h-[45px] px-8  bg-[#31786B]  text-[#FEFAF9]"
+          ) %>
+        </div>
+      </.form>
+
+      <p class="flex justify-center  items-center gap-4 ">
+        <%= link("Register", to: Routes.user_registration_path(@conn, :new)) %> | <%= link(
+          "Forgot your password?",
+          to: Routes.user_reset_password_path(@conn, :new)
+        ) %>
+      </p>
+    </div>
+    <div class="w-0 h-[50]
+  border-t-[50] border-t-transparent
+  border-l-[75px] border-l-[#31786B]
+  border-b-[50] border-b-transparent">
+    </div>
+  </div>
+</div>

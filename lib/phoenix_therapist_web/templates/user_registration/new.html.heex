@@ -1,73 +1,249 @@
-<h1>Register</h1>
-
-<.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
-
-  <%= label(f, :email) %>
-  <%= email_input(f, :email, required: true) %>
-  <%= error_tag(f, :email) %>
-
-  <%= label(f, :first_name) %>
-  <%= text_input(f, :first_name, required: true) %>
-  <%= error_tag(f, :first_name) %>
-
-  <%= label(f, :last_name) %>
-  <%= text_input(f, :last_name, required: true) %>
-  <%= error_tag(f, :last_name) %>
-
-  <%= label(f, :phone_number) %>
-  <%= text_input(f, :phone_number, required: true) %>
-  <%= error_tag(f, :phone_number) %>
-
-  <%= label(f, :place_of_residence) %>
-  <%= text_input(f, :place_of_residence, required: true) %>
-  <%= error_tag(f, :place_of_residence) %>
-
-  <%= label(f, :date_of_birth) %>
-  <%= date_input(f, :date_of_birth, required: true) %>
-  <%= error_tag(f, :date_of_birth) %>
-
-  <%= label(f, :county) %>
-  <%= text_input(f, :county, required: true) %>
-
-  <%= error_tag(f, :county) %>
-
-  <%= label(f, :marital_status) %>
-  <%= text_input(f, :marital_status, required: true) %>
-
-  <%= error_tag(f, :marital_status) %>
-
-  <%= label(f, :gender) %>
-  <%= text_input(f, :gender, required: true) %>
-
-  <%= error_tag(f, :gender) %>
-
-  <%= label(f, :id_number) %>
-  <%= number_input(f, :id_number, required: true) %>
-
-  <%= error_tag(f, :id_number) %>
-
-  <%= label(f, :occupation) %>
-  <%= text_input(f, :occupation, required: true) %>
-
-  <%= error_tag(f, :occupation) %>
-
-  <%= label(f, :password) %>
-  <%= password_input(f, :password, required: true) %>
-  <%= error_tag(f, :password) %>
-
-  <div>
-    <%= submit("Register") %>
+<div class="bg-[#FEFAF9] h-[100vh] flex justify-center items-center">
+  <div class="w-[50%] inset-0 h-[100vh]">
+    <img src="/images/chooseus.jpeg" alt="chooseus" class="w-[100%] h-[100%] object-cover" />
   </div>
-</.form>
+  <div class="w-[50%] h-[100vh] flex flex-col justify-between ">
+    <div class="flex justify-end">
+      <div class="w-0 h-0
+  border-t-[50px] border-t-transparent
+  border-r-[75px] border-r-[#31786B]
+  border-b-[50px] border-b-transparent">
+      </div>
+    </div>
+    <div class="flex justify-center flex-col gap-4 w-[80%] mx-auto   ">
+      <.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
+        <%= if @changeset.action do %>
+          <div class="alert alert-danger">
+            <p>Oops, something went wrong! Please check the errors below.</p>
+          </div>
+        <% end %>
 
-<p>
-  <%= link("Log in", to: Routes.user_session_path(@conn, :new)) %> | <%= link(
-    "Forgot your password?",
-    to: Routes.user_reset_password_path(@conn, :new)
-  ) %>
-</p>
+        <div class="flex justify-between my-1 w-[100%]">
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :first_name) %>
+            <%= text_input(f, :first_name,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :first_name) %>
+            </p>
+          </div>
+
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :last_name) %>
+            <%= text_input(f, :last_name,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :last_name) %>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-between my-1 w-[100%]">
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :id_number) %>
+            <%= text_input(f, :id_number,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :id_number) %>
+            </p>
+          </div>
+
+          <div class="flex flex-col  w-[48%]">
+            <%= label(f, :phone_number) %>
+            <%= text_input(f, :phone_number,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :phone_number) %>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-between my-1 w-[100%]">
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :county) %>
+            <%= select(
+              f,
+              :county,
+              [
+                "Baringo",
+                "Bomet",
+                "Bungoma",
+                "Busia",
+                "Elgeyo-Marakwet",
+                "Embu",
+                "Garissa",
+                "Homa Bay",
+                "Isiolo",
+                "Kajiado",
+                "Kakamega",
+                "Kericho",
+                "Kiambu",
+                "Kilifi",
+                "Kirinyaga",
+                "Kisii",
+                "Kisumu",
+                "Kitui",
+                "Kwale",
+                "Laikipia",
+                "Lamu",
+                "Machakos",
+                "Makueni",
+                "Mandera",
+                "Marsabit",
+                "Meru",
+                "Migori",
+                "Mombasa",
+                "Murang'a",
+                "Nairobi",
+                "Nakuru",
+                "Nandi",
+                "Narok",
+                "Nyamira",
+                "Nyandarua",
+                "Nyeri",
+                "Samburu",
+                "Siaya",
+                "Taita-Taveta",
+                "Tana River",
+                "Tharaka-Nithi",
+                "Trans Nzoia",
+                "Turkana",
+                "Uasin Gishu",
+                "Vihiga",
+                "Wajir",
+                "West Pokot"
+              ],
+              prompt: "Select County",
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :county) %>
+            </p>
+          </div>
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :place_of_residence) %>
+            <%= text_input(f, :place_of_residence,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :place_of_residence) %>
+            </p>
+          </div>
+        </div>
+        <div class="flex justify-between my-1 w-[100%]">
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :date_of_birth) %>
+            <%= date_input(f, :date_of_birth,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :date_of_birth) %>
+            </p>
+          </div>
+
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :marital_status) %>
+            <%= select(f, :marital_status, ["Single", "Married", "Divorced", "Widowed"],
+              prompt: "Select Marital Status",
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :marital_status) %>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-between my-1 w-[100%]">
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :gender) %>
+            <%= select(f, :gender, ["Male", "Female", "Prefer not to say"],
+              prompt: "Select Gender",
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :gender) %>
+            </p>
+          </div>
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :occupation) %>
+            <%= text_input(f, :occupation,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :occupation) %>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-between my-1 w-[100%]">
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :email) %>
+            <%= number_input(f, :email,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :email) %>
+            </p>
+          </div>
+
+          <div class="flex flex-col w-[48%]">
+            <%= label(f, :password) %>
+            <%= password_input(f, :password,
+              required: true,
+              class:
+                "w-[100%px] h-[40px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+            ) %>
+            <p class="pt-5">
+              <%= error_tag(f, :password) %>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-center hover:scale-105 transition-all duration-500 ease-in-out items-center mt-4">
+          <%= submit("Register",
+            class: " h-[40px] px-8  bg-[#31786B]  text-[#FEFAF9]"
+          ) %>
+        </div>
+      </.form>
+
+      <p class="flex justify-center  items-center gap-4 ">
+        <%= link("Log in", to: Routes.user_session_path(@conn, :new)) %> | <%= link(
+          "Forgot your password?",
+          to: Routes.user_reset_password_path(@conn, :new)
+        ) %>
+      </p>
+    </div>
+
+    <div class="w-0 h-0
+  border-t-[50px] border-t-transparent
+  border-l-[75px] border-l-[#31786B]
+  border-b-[50px] border-b-transparent">
+    </div>
+  </div>
+</div>

@@ -22,27 +22,29 @@
             <div class="w-[200px] h-[100px] bg-[#387D73]/90 flex justify-center gap-2 items-center">
               <div class="flex gap-2 items-center">
                 <img src="/images/booking1.png" alt="" class="w-[50px] h-[50px]" />
-                <p class="text-white font-semibold">Book an appointment</p>
+                <p class="text-white font-semibold poppins-regular">Book an appointment</p>
               </div>
             </div>
             <div class="w-[200px] h-[100px] bg-[#387D73]/80 flex justify-center gap-2 items-center">
               <img src="/images/booking2.png" alt="" class="w-[50px] h-[50px]" />
-              <p class="text-white font-semibold">Talk to a therapist</p>
+              <p class="text-white font-semibold poppins-regular">Talk to a therapist</p>
             </div>
             <div class="w-[200px] h-[100px] bg-[#387D73]/80 flex justify-center gap-2 items-center">
               <img src="/images/booking3.png" alt="" class="w-[50px] h-[50px]" />
-              <p class="text-white font-semibold">Leave Happy and Satisfied</p>
+              <p class="text-white font-semibold poppins-regular">Leave Happy and Satisfied</p>
             </div>
             <div class="w-[200px] h-[100px] bg-[#387D73]/80 flex justify-center gap-2 items-center">
               <img src="/images/booking3.png" alt="" class="w-[50px] h-[50px]" />
-              <p class="text-white font-semibold">Refer a friend</p>
+              <p class="text-white font-semibold poppins-regular">Refer a friend</p>
             </div>
           </div>
         </div>
       </div>
       <div class="bg-[#31786B] flex flex-col justify-center  p-8 w-[600px] h-[80%]">
-        <p class="text-gray-200">
-          There are emits consectetur notted aetinciduns pisicing jutre elit sed a eiusmode tempor incididunt labore et dolo aerws magna aliqua lonmea knocked at doorses is atwist ui...
+        <p class="text-gray-200 poppins-regular">
+          We prefer for you to make a booking before you come to the clinic, this
+          will help us to serve you better .
+          Select a date to check for available times and make a booking.
         </p>
         <.form let={f} for={@date_changeset} phx_submit="search_available_times">
           <div class="flex my-4 flex-col">
@@ -50,13 +52,20 @@
               class:
                 "text-gray-500 cursor-pointer focus:border-gray-500 focus:ring-gray-500 border-2 border-gray-500 cursor-pointer"
             ) %>
-            <div class="flex justify-center font-semibold items-center hover:scale-105 transition-all duration-500 ease-in-out mt-4">
+            <div class="flex justify-center font-semibold poppins-regular items-center hover:scale-105 transition-all duration-500 ease-in-out mt-4">
               <%= submit("Check Availability",
-                class: "h-[45px] px-8  bg-white text-[#31786B]  text-[#FEFAF9]"
+                class: "h-[45px] px-8  bg-white text-[#31786B]  "
               ) %>
             </div>
           </div>
         </.form>
+
+        <%= live_redirect  to: Routes.page_index_path(@socket, :index) do %>
+          <div class="flex items-center ">
+            <img src="/images/orangearrow.png" alt="" class="w-[50px]  object-contain h-[20px]" />
+            <p class="text-white">Back Home</p>
+          </div>
+        <% end %>
 
         <%= if @selected_date != "" do %>
           <p class="text-gray-200 text-center">
@@ -66,7 +75,7 @@
             <%= live_patch("Add A New Booking",
               to: Routes.booking_index_path(@socket, :new),
               class:
-                "h-[45px] px-8  bg-white text-[#31786B] flex justify-center items-center  text-[#FEFAF9]"
+                "h-[45px] px-8  bg-white text-[#31786B] poppins-regular flex justify-center items-center  "
             ) %>
           </div>
         <% end %>

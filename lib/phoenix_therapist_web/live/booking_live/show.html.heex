@@ -5,10 +5,10 @@
   <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex flex-col shadow-md    shadow-gray-300">
     <div class="flex justify-between">
       <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
-        <p class="uppercase underline text-2xl font-semibold">
+        <p class="uppercase  text-[#31786B] poppins-bold underline text-2xl font-semibold">
           User Information
         </p>
-        <ul>
+        <ul class="poppins-regular">
           <li>
             <strong>Name:</strong>
             <%= @booking.user.first_name <> " " <> @booking.user.last_name %>
@@ -47,11 +47,11 @@
         </ul>
       </div>
       <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
-        <p class="uppercase underline text-2xl font-semibold">
+        <p class="uppercase  text-[#31786B] poppins-bold  underline text-2xl font-semibold">
           Booking Information
         </p>
 
-        <ul>
+        <ul class="poppins-regular">
           <li>
             <strong>Counselor gender preference:</strong>
             <%= @booking.counselor_gender_preference %>
@@ -92,10 +92,10 @@
         </ul>
       </div>
       <div class="flex flex-col w-[30%] p-4">
-        <p class="uppercase underline text-2xl font-semibold">
+        <p class="uppercase  text-[#31786B] poppins-bold u underline text-2xl font-semibold">
           Appointment  Information
         </p>
-        <ul>
+        <ul class="poppins-regular">
           <li>
             <strong>Time:</strong>
             <%= @booking.available_time.time %>
@@ -123,7 +123,7 @@
   </h2>
 
   <%= if @notes == [] do %>
-    <p class="text-center text-gray-400 text-xl my-8">
+    <p class="text-center text-gray-400 poppins-bold text-xl my-8">
       No notes for this appointment
     </p>
   <% else %>
@@ -131,8 +131,7 @@
       <%= for note <- @notes do %>
         <div class="w-[90%] mx-auto flex flex-col justify-between shadow-md h-[200px] shadow-gray-200  p-4 mt-8 hover:scale-105 transition-all ease-in-out cursor-pointer duration-500">
           <div class="flex flex-col gap-1">
-            <p class="text-xl font-semibold">Note</p>
-            <p class=" text-gray-400"><%= note.description %></p>
+            <p class="poppins-regular text-gray-400"><%= note.description %></p>
           </div>
         </div>
       <% end %>

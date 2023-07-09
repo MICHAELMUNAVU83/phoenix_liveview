@@ -37,10 +37,11 @@ defmodule PhoenixTherapist.Bookings do
   end
 
   def search_bookings_by_user_name(name) do
+    IO.inspect(name)
+
     query =
-      from(b in Booking,
-        join: u in assoc(b, :user),
-        where: fragment("? LIKE ?", u.first_name, ^"%#{name}%")
+      from((b in Booking) |> Repo.preload(:user),
+        where: fragment("? LIKE ?", b.user.first_name, ^"%#{name}%")
       )
 
     Repo.all(query)

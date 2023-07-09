@@ -12,7 +12,7 @@
 <% end %>
 
 <div class=" pt-12 mx-auto inter-regular flex flex-col">
-  <div class="bg-[#31786B] -mb-8  text-xl rounded-md z8   text-white w-[90%]  mx-auto flex items-center p-4 py-8  h-[80px]">
+  <div class="bg-[#31786B] -mb-8  poppins-regular text-xl rounded-md z8   text-white w-[90%]  mx-auto flex items-center p-4 py-8  h-[80px]">
     Available Times
   </div>
   <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex flex-col gap-4  shadow-md    shadow-gray-300">
@@ -20,11 +20,11 @@
       <%= live_patch("New Available time",
         to: Routes.available_time_index_path(@socket, :new),
         class:
-          "h-[40px]  px-4 py-2 bg-[#31786B] text-white rounded-md flex items-center justify-center"
+          "h-[40px]  px-4 py-2 bg-[#31786B] poppins-regular text-white rounded-md flex items-center justify-center"
       ) %>
     </div>
     <table class="w-[100%] text-center">
-      <thead class="bg-[#EFA286] text-white h-[40px]">
+      <thead class="bg-[#EFA286] poppins-light text-white h-[40px]">
         <tr>
           <th>Time</th>
           <th>Date</th>
@@ -32,7 +32,7 @@
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody id="available_times" class="bg-[#FEFAF9] ">
+      <tbody id="available_times" class="bg-[#FEFAF9] poppins-regular ">
         <%= for available_time <- @available_times do %>
           <tr id={"available_time-#{available_time.id}"}>
             <td class="py-2"><%= available_time.time %></td>

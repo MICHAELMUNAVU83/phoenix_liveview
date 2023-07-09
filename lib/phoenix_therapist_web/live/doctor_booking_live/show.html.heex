@@ -18,10 +18,10 @@
   </div>
   <div class="bg-white p-24  w-[95%]    overflow-x-auto  mx-auto flex justify-between  shadow-md    shadow-gray-300">
     <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
-      <p class="uppercase underline text-2xl font-semibold">
+      <p class="uppercase  text-[#31786B] poppins-bold underline text-2xl font-semibold">
         User Information
       </p>
-      <ul>
+      <ul class="poppins-regular">
         <li>
           <strong>Name:</strong>
           <%= @booking.user.first_name <> " " <> @booking.user.last_name %>
@@ -60,7 +60,7 @@
       </ul>
     </div>
     <div class="flex flex-col w-[30%] border-r-2 p-4 border-gray-300">
-      <p class="uppercase underline text-2xl font-semibold">
+      <p class="uppercase text-[#31786B] poppins-bold  underline text-2xl font-semibold">
         Booking Information
       </p>
 
@@ -105,10 +105,10 @@
       </ul>
     </div>
     <div class="flex flex-col w-[30%] p-4">
-      <p class="uppercase underline text-2xl font-semibold">
+      <p class="uppercase text-[#31786B] poppins-bold underline text-2xl font-semibold">
         Appointment  Information
       </p>
-      <ul>
+      <ul class="poppins-regular">
         <li>
           <strong>Time:</strong>
           <%= @booking.available_time.time %>
@@ -124,7 +124,7 @@
 </div>
 
 <div class="w-[95%] mb-12 mx-auto mt-8 ">
-  <h2 class="text-2xl uppercase underline text-center  text-gray-500 font-semibold">
+  <h2 class="text-2xl poppins-bold uppercase underline text-center  text-gray-500 font-semibold">
     Doctor Notes for this Appointment
   </h2>
 
@@ -132,7 +132,7 @@
     <%= live_redirect("Add Doctor's Note",
       to: Routes.doctor_booking_show_path(@socket, :addnotes, @booking),
       class:
-        "bg-[#31786B] text-white px-4 py-2 rounded-md shadow-md hover:bg-[#31786B] hover:shadow-none"
+        "bg-[#31786B] poppins-regular text-white px-4 py-2 rounded-md shadow-md hover:bg-[#31786B] hover:shadow-none"
     ) %>
   </div>
 
@@ -140,15 +140,14 @@
     <%= for note <- @notes do %>
       <div class="w-[90%] mx-auto flex flex-col justify-between shadow-md h-[200px] shadow-gray-200  p-4 mt-8 hover:scale-105 transition-all ease-in-out cursor-pointer duration-500">
         <div class="flex flex-col gap-1">
-          <p class="text-xl font-semibold">Note</p>
-          <p class=" text-gray-400"><%= note.description %></p>
+          <p class="poppins-regular text-gray-400"><%= note.description %></p>
         </div>
 
         <div class="flex  gap-4">
           <%= live_patch("Edit",
             to: Routes.doctor_booking_show_path(@socket, :editnote, @booking, note),
             class:
-              "bg-[#31786B] text-white px-4 py-2 rounded-md shadow-md hover:bg-[#31786B] hover:shadow-none"
+              "bg-[#31786B] poppins-regular text-white px-4 py-2 rounded-md shadow-md hover:bg-[#31786B] hover:shadow-none"
           ) %>
 
           <%= link("Delete",
@@ -157,7 +156,7 @@
             phx_value_id: note.id,
             data: [confirm: "Are you sure?"],
             class:
-              "bg-[#31786B] text-white px-4 py-2 rounded-md shadow-md hover:bg-[#31786B] hover:shadow-none"
+              "bg-[#31786B] poppins-regular text-white px-4 py-2 rounded-md shadow-md hover:bg-[#31786B] hover:shadow-none"
           ) %>
         </div>
       </div>

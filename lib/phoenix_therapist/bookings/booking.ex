@@ -12,7 +12,7 @@ defmodule PhoenixTherapist.Bookings.Booking do
     field(:visit, :string)
     belongs_to(:available_time, PhoenixTherapist.AvailableTimes.AvailableTime)
     belongs_to(:user, PhoenixTherapist.Accounts.User)
-    has_many(:notes, PhoenixTherapist.Notes.Note)
+    has_many(:notes, PhoenixTherapist.Notes.Note, on_delete: :delete_all)
 
     timestamps()
   end

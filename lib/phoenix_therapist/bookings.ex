@@ -21,6 +21,7 @@ defmodule PhoenixTherapist.Bookings do
   def list_bookings_for_a_user(user_id) do
     Repo.all(Booking)
     |> Enum.filter(fn booking -> booking.user_id == user_id end)
+    |> Repo.preload(:available_time)
   end
 
   def list_bookings do

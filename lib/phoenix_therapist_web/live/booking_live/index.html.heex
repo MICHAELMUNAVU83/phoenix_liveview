@@ -17,16 +17,21 @@
   <div class="flex flex-col justify-between bg-white/80 h-[100vh] overflow-y-scroll">
     <div class=" flex justify-start items-center h-[60%]">
       <div class="bookingbg bg-no-repeat bg-cover bg-center h-[100%] w-[40%]">
-        <div class="flex justify-end p-8  items-center">
-          <div class="flex gap-8 flex-col">
-            <div class="w-[150px] h-[100px] bg-red-500">
-              hbjkm
+        <div class="flex justify-end p-8  ">
+          <div class="grid grid-rows-3  gap-8">
+            <div class="w-[200px] h-[100px] bg-[#387D73]/90 flex justify-center gap-2 items-center">
+              <div class="flex gap-2 items-center">
+                <img src="/images/booking1.png" alt="" class="w-[50px] h-[50px]" />
+                <p class="text-white font-semibold">Book an appointment</p>
+              </div>
             </div>
-            <div class="w-[150px] h-[100px] bg-red-500">
-              hbjkm
+            <div class="w-[200px] h-[100px] bg-[#387D73]/80 flex justify-center gap-2 items-center">
+              <img src="/images/booking2.png" alt="" class="w-[50px] h-[50px]" />
+              <p class="text-white font-semibold">Talk to a therapist</p>
             </div>
-            <div class="w-[150px] h-[100px] bg-red-500">
-              hbjkm
+            <div class="w-[200px] h-[100px] bg-[#387D73]/80 flex justify-center gap-2 items-center">
+              <img src="/images/booking3.png" alt="" class="w-[50px] h-[50px]" />
+              <p class="text-white font-semibold">Leave Happy and Satisfied</p>
             </div>
           </div>
         </div>
@@ -50,7 +55,7 @@
         </.form>
 
         <%= if @selected_date != "" do %>
-          <p class="text-gray-200">
+          <p class="text-gray-200 text-center">
             The doctor is open on <%= @selected_date %> , make an appointment
           </p>
           <div class="flex justify-center font-semibold items-center hover:scale-105 transition-all duration-500 ease-in-out mt-4">
@@ -64,56 +69,59 @@
       </div>
     </div>
 
-    <div class=" h-[50%] flex flex-col p-8 ">
-      <p>
-        There are emits consectetur notted aetinciduns pisicing jutre elit sed a eiusmode tempor incididunt labore et dolo aerws magna aliqua lonmea knocked at doorses is atwist ui...
-      </p>
+    <div class=" h-[60%] flex flex-col p-8 ">
+      <h2 class="text-[#31786B] text-4xl text-center uppercase underline font-bold">Bookings</h2>
+      <table class="w-[50%] mt-8 mx-auto text-center  ">
+        <thead class="bg-[#31786B] h-[50px] text-white">
+          <tr>
+            <th>Appointment Date</th>
+            <th>Appointment Time</th>
+
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="bookings" class="bg-[#FEFAF9] shadow-md  shadow-gray-400">
+          <%= for booking <- @bookings do %>
+            <tr id={"booking-#{booking.id}"}>
+              <td class="py-2"><%= booking.available_time.date %></td>
+              <td class="py-2"><%= booking.available_time.time %></td>
+
+              <td class="py-2">
+                <div class="flex items-center justify-center gap-4">
+                  <%= live_redirect(to: Routes.booking_show_path(@socket, :show, booking)) do %>
+                    <img
+                      src="/images/viewicon.png"
+                      class="w-[25px] h-[25px] object-cover"
+                      alt="view"
+                    />
+                  <% end %>
+
+                  <%= live_patch(to: Routes.booking_index_path(@socket, :edit, booking)) do %>
+                    <img
+                      src="/images/editicon.png"
+                      class="w-[25px] h-[25px] object-cover"
+                      alt="view"
+                    />
+                  <% end %>
+
+                  <%= link(
+                    to: "#",
+                    phx_click: "delete",
+                    phx_value_id: booking.id,
+                    data: [confirm: "Are you sure?"]
+                  ) do %>
+                    <img
+                      src="/images/deleteicon.png"
+                      class="w-[25px] h-[25px] object-cover"
+                      alt="view"
+                    />
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Counselor gender preference</th>
-      <th>Referred by</th>
-      <th>Counsulted before</th>
-      <th>Medical history</th>
-      <th>Next of kin name</th>
-      <th>Next of kin number</th>
-      <th>Visit</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="bookings">
-    <%= for booking <- @bookings do %>
-      <tr id={"booking-#{booking.id}"}>
-        <td><%= booking.counselor_gender_preference %></td>
-        <td><%= booking.referred_by %></td>
-        <td><%= booking.counsulted_before %></td>
-        <td><%= booking.medical_history %></td>
-        <td><%= booking.next_of_kin_name %></td>
-        <td><%= booking.next_of_kin_number %></td>
-        <td><%= booking.visit %></td>
-
-        <td>
-          <span>
-            <%= live_redirect("Show", to: Routes.booking_show_path(@socket, :show, booking)) %>
-          </span>
-          <span>
-            <%= live_patch("Edit", to: Routes.booking_index_path(@socket, :edit, booking)) %>
-          </span>
-          <span>
-            <%= link("Delete",
-              to: "#",
-              phx_click: "delete",
-              phx_value_id: booking.id,
-              data: [confirm: "Are you sure?"]
-            ) %>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

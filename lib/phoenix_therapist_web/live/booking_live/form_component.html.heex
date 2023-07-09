@@ -38,7 +38,9 @@
 
     <div class="flex justify-between w-[100%] items-center">
       <div class="flex flex-col w-[48%]  ">
-        <%= label(f, :available_time) %>
+        <p>
+          Select a time
+        </p>
         <%= select(f, :available_time_id, @available_times,
           prompt: "Select a time",
           class:

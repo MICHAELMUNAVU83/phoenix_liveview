@@ -35,9 +35,20 @@ defmodule PhoenixTherapistWeb.AvailableTimeLive.Index do
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
     available_time = AvailableTimes.get_available_time!(id)
-    {:ok, _} = AvailableTimes.delete_available_time(available_time)
+    IO.inspect(available_time)
 
-    {:noreply, assign(socket, :available_times, list_available_times())}
+    IO.inspect(length(available_time.bookings))
+
+    if length(available_time.bookings) == 0 do
+      {:ok, _} = AvailableTimes.delete_available_time(available_time)
+
+      {:noreply, assign(socket, :available_times, list_available_times())}
+    else
+      {:noreply,
+       socket
+       |> assign(:page_title, "Listing Available times")
+       |> put_flash(:error, "Cannot delete available as it has bookings")}
+    end
   end
 
   defp list_available_times do

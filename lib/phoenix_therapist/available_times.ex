@@ -53,6 +53,15 @@ defmodule PhoenixTherapist.AvailableTimes do
     Repo.all(query)
   end
 
+  def times_for_a_date(date) do
+    query =
+      from(a in AvailableTime,
+        where: a.date == ^date
+      )
+
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single available_time.
 
@@ -67,7 +76,7 @@ defmodule PhoenixTherapist.AvailableTimes do
       ** (Ecto.NoResultsError)
 
   """
-  def get_available_time!(id), do: Repo.get!(AvailableTime, id)
+  def get_available_time!(id), do: Repo.get!(AvailableTime, id) |> Repo.preload(:bookings)
 
   @doc """
   Creates a available_time.

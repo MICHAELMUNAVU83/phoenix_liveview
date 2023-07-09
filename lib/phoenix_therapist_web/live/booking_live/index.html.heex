@@ -71,57 +71,62 @@
 
     <div class=" h-[60%] flex flex-col p-8 ">
       <h2 class="text-[#31786B] text-4xl text-center uppercase underline font-bold">Bookings</h2>
-      <table class="w-[50%] mt-8 mx-auto text-center  ">
-        <thead class="bg-[#31786B] h-[50px] text-white">
-          <tr>
-            <th>Appointment Date</th>
-            <th>Appointment Time</th>
 
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="bookings" class="bg-[#FEFAF9] shadow-md  shadow-gray-400">
-          <%= for booking <- @bookings do %>
-            <tr id={"booking-#{booking.id}"}>
-              <td class="py-2"><%= booking.available_time.date %></td>
-              <td class="py-2"><%= booking.available_time.time %></td>
+      <%= if @bookings != [] do %>
+        <table class="w-[50%] mt-8 mx-auto text-center  ">
+          <thead class="bg-[#31786B] h-[50px] text-white">
+            <tr>
+              <th>Appointment Date</th>
+              <th>Appointment Time</th>
 
-              <td class="py-2">
-                <div class="flex items-center justify-center gap-4">
-                  <%= live_redirect(to: Routes.booking_show_path(@socket, :show, booking)) do %>
-                    <img
-                      src="/images/viewicon.png"
-                      class="w-[25px] h-[25px] object-cover"
-                      alt="view"
-                    />
-                  <% end %>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bookings" class="bg-[#FEFAF9] shadow-md  shadow-gray-400">
+            <%= for booking <- @bookings do %>
+              <tr id={"booking-#{booking.id}"}>
+                <td class="py-2"><%= booking.available_time.date %></td>
+                <td class="py-2"><%= booking.available_time.time %></td>
 
-                  <%= live_patch(to: Routes.booking_index_path(@socket, :edit, booking)) do %>
-                    <img
-                      src="/images/editicon.png"
-                      class="w-[25px] h-[25px] object-cover"
-                      alt="view"
-                    />
-                  <% end %>
+                <td class="py-2">
+                  <div class="flex items-center justify-center gap-4">
+                    <%= live_redirect(to: Routes.booking_show_path(@socket, :show, booking)) do %>
+                      <img
+                        src="/images/viewicon.png"
+                        class="w-[25px] h-[25px] object-cover"
+                        alt="view"
+                      />
+                    <% end %>
 
-                  <%= link(
+                    <%= live_patch(to: Routes.booking_index_path(@socket, :edit, booking)) do %>
+                      <img
+                        src="/images/editicon.png"
+                        class="w-[25px] h-[25px] object-cover"
+                        alt="view"
+                      />
+                    <% end %>
+
+                    <%= link(
                     to: "#",
                     phx_click: "delete",
                     phx_value_id: booking.id,
                     data: [confirm: "Are you sure?"]
                   ) do %>
-                    <img
-                      src="/images/deleteicon.png"
-                      class="w-[25px] h-[25px] object-cover"
-                      alt="view"
-                    />
-                  <% end %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+                      <img
+                        src="/images/deleteicon.png"
+                        class="w-[25px] h-[25px] object-cover"
+                        alt="view"
+                      />
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p class="text-center my-8 text-xl text-gray-500">No Bookings Yet Added</p>
+      <% end %>
     </div>
   </div>
 </div>

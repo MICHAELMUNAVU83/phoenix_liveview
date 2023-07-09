@@ -1,5 +1,5 @@
 <div class="h-[100vh] homebg w-[100%] bg-center bg-cover bg-no-repeat">
-  <div class="bg-[#EFA286] w-[60%] poppins-regular p-4 flex items-center justify-between h-[70px] mx-auto">
+  <div class="bg-[#EFA286] w-[80%] poppins-regular p-4 flex items-center justify-between h-[70px] mx-auto">
     <a
       href="#home"
       class="text-white    text-xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
@@ -50,6 +50,14 @@
     <% else %>
       <%= link("Log in",
         to: Routes.user_session_path(@socket, :new),
+        class:
+          "text-white text-2xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+      ) %>
+    <% end %>
+
+    <%= if @admin_user do %>
+      <%= link("Dashboard",
+        to: Routes.available_time_index_path(@socket, :index),
         class:
           "text-white text-2xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
       ) %>

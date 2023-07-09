@@ -26,17 +26,6 @@ defmodule PhoenixTherapistWeb.Router do
   scope "/", PhoenixTherapistWeb do
     pipe_through([:browser, :require_authenticated_user])
 
-    live("/available_times", AvailableTimeLive.Index, :index)
-    live("/available_times/new", AvailableTimeLive.Index, :new)
-    live("/available_times/:id/edit", AvailableTimeLive.Index, :edit)
-
-    live("/available_times/:id", AvailableTimeLive.Show, :show)
-    live("/available_times/:id/show/edit", AvailableTimeLive.Show, :edit)
-    live("/doctor_bookings", DoctorBookingLive.Index, :index)
-    live("/doctor_bookings/:id", DoctorBookingLive.Show, :show)
-    live("/doctor_bookings/:id/addnotes", DoctorBookingLive.Show, :addnotes)
-    live("/doctor_bookings/:id/notes/:note_id", DoctorBookingLive.Show, :editnote)
-
     live("/bookings", BookingLive.Index, :index)
     live("/bookings/new", BookingLive.Index, :new)
     live("/bookings/:id/edit", BookingLive.Index, :edit)
@@ -51,6 +40,21 @@ defmodule PhoenixTherapistWeb.Router do
 
     live("/notes/:id", NoteLive.Show, :show)
     live("/notes/:id/show/edit", NoteLive.Show, :edit)
+  end
+
+  scope "/", PhoenixTherapistWeb do
+    pipe_through([:browser, :require_admin])
+
+    live("/available_times", AvailableTimeLive.Index, :index)
+    live("/available_times/new", AvailableTimeLive.Index, :new)
+    live("/available_times/:id/edit", AvailableTimeLive.Index, :edit)
+
+    live("/available_times/:id", AvailableTimeLive.Show, :show)
+    live("/available_times/:id/show/edit", AvailableTimeLive.Show, :edit)
+    live("/doctor_bookings", DoctorBookingLive.Index, :index)
+    live("/doctor_bookings/:id", DoctorBookingLive.Show, :show)
+    live("/doctor_bookings/:id/addnotes", DoctorBookingLive.Show, :addnotes)
+    live("/doctor_bookings/:id/notes/:note_id", DoctorBookingLive.Show, :editnote)
   end
 
   # Other scopes may use custom stacks.

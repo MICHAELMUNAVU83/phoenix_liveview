@@ -139,6 +139,20 @@ defmodule PhoenixTherapistWeb.UserAuth do
     end
   end
 
+  def require_admin(conn, _opts) do
+    admin_user_emails = ["michaelmunavu83@gmail.com", "arafatkivuvanigmail.com"]
+
+    if conn.assigns[:current_user] && conn.assigns[:current_user].email in admin_user_emails do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must be an admin to access this page.")
+      |> maybe_store_return_to()
+      |> redirect(to: Routes.page_index_path(conn, :index))
+      |> halt()
+    end
+  end
+
   defp maybe_store_return_to(%{method: "GET"} = conn) do
     put_session(conn, :user_return_to, current_path(conn))
   end

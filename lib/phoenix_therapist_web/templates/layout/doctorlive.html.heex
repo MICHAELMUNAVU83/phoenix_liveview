@@ -12,9 +12,14 @@
   <% end %>
 
   <div class="w-[250px] poppins-regular bg-[#31786B] text-[#FEFAF9] fixed pt-36 flex  flex-col items-center h-[100vh]">
-    <p>
-      Therapy
-    </p>
+    <%= live_redirect(
+      to: Routes.page_index_path(@socket, :index),
+     
+    ) do %>
+      <p class="text-[#FEFAF9] my-2 hover:text-[#FEFAF9] hover:scale-105 transition-all ease-in-out duration-300">
+        Home
+      </p>
+    <% end %>
     <p class="w-[80%] mx-auto h-[1px] bg-[#FEFAF9] my-4" />
     <%= live_redirect(
       to: Routes.available_time_index_path(@socket, :index),

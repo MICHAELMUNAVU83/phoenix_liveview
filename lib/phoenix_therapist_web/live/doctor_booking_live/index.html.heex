@@ -17,16 +17,21 @@
       <tbody id="doctor_bookings" class="bg-[#FEFAF9] ">
         <%= for booking <- @bookings do %>
           <tr id={"booking_" <> Integer.to_string(booking.id)}>
-            <td class="py-2"><%= booking.id %></td>
             <td class="py-2"><%= booking.user.first_name %></td>
             <td class="py-2"><%= booking.available_time.time %></td>
             <td class="py-2"><%= booking.available_time.date %></td>
 
             <td class="py-2">
               <div class="flex items-center justify-center gap-2">
-                <%= live_redirect("Show",
+                <%= live_redirect(
                   to: Routes.doctor_booking_show_path(@socket, :show, booking)
-                ) %>
+                )  do %>
+                  <img
+                    src="/images/viewicon.png"
+                    class="w-[25px] h-[25px] object-cover"
+                    alt="view"
+                  />
+                <% end %>
               </div>
             </td>
           </tr>

@@ -34,14 +34,15 @@ defmodule PhoenixTherapistWeb.Router do
     live("/available_times/:id/show/edit", AvailableTimeLive.Show, :edit)
     live("/doctor_bookings", DoctorBookingLive.Index, :index)
     live("/doctor_bookings/:id", DoctorBookingLive.Show, :show)
+    live("/doctor_bookings/:id/addnotes", DoctorBookingLive.Show, :addnotes)
+    live("/doctor_bookings/:id/notes/:note_id", DoctorBookingLive.Show, :editnote)
 
     live("/bookings", BookingLive.Index, :index)
     live("/bookings/new", BookingLive.Index, :new)
     live("/bookings/:id/edit", BookingLive.Index, :edit)
 
     live("/bookings/:id", BookingLive.Show, :show)
-    live("/bookings/:id/addnotes", BookingLive.Show, :addnotes)
-    live("/bookings/:id/notes/:note_id", BookingLive.Show, :editnote)
+
     live("/bookings/:id/show/edit", BookingLive.Show, :edit)
 
     live("/notes", NoteLive.Index, :index)

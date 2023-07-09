@@ -1,19 +1,5 @@
 <h1>Show Booking</h1>
 
-<%= if @live_action in [:addnotes, :editnote] do %>
-  <.modal return_to={Routes.booking_show_path(@socket, :show, @booking)}>
-    <.live_component
-      module={PhoenixTherapistWeb.BookingLive.AddNotesFormComponent}
-      id={@booking.id}
-      title={@page_title}
-      action={@live_action}
-      note={@note}
-      booking={@booking}
-      return_to={Routes.booking_show_path(@socket, :show, @booking)}
-    />
-  </.modal>
-<% end %>
-
 <ul>
   <li>
     <strong>Counselor gender preference:</strong>
@@ -55,7 +41,7 @@
 
 <h2>Notes</h2>
 
-<%= live_redirect("Add Note", to: Routes.booking_show_path(@socket, :addnotes, @booking)) %>
+<%!-- <%= live_redirect("Add Note", to: Routes.booking_show_path(@socket, :addnotes, @booking)) %> --%>
 
 <h1 class="font-bold text-center">
   Notes
@@ -78,11 +64,11 @@
           <span>
             <%= live_redirect("Show", to: Routes.note_show_path(@socket, :show, note)) %>
           </span>
-          <span>
+          <%!-- <span>
             <%= live_patch("Edit",
               to: Routes.booking_show_path(@socket, :editnote, @booking, note)
             ) %>
-          </span>
+          </span> --%>
           <span>
             <%= link("Delete",
               to: "#",

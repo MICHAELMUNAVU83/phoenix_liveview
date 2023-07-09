@@ -1,4 +1,4 @@
-defmodule PhoenixTherapistWeb.BookingLive.AddNotesFormComponent do
+defmodule PhoenixTherapistWeb.DoctorBookingLive.AddNotesFormComponent do
   use PhoenixTherapistWeb, :live_component
 
   alias PhoenixTherapist.Notes

@@ -1,0 +1,33 @@
+<div>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+    Add a Doctor's note for this visit
+  </h2>
+  <.form
+    let={f}
+    for={@changeset}
+    id="note-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save"
+  >
+    <div class="w-[70%] mx-auto  flex flex-col">
+      <%= label(f, :description) %>
+      <%= textarea(f, :description,
+        class:
+          "w-[100%] h-[200px]   focus:border-[#31786B] focus:ring-[#31786B] border-2 border-[#31786B]"
+      ) %>
+      <p class="pt-5">
+        <%= error_tag(f, :description) %>
+      </p>
+
+      <%= hidden_input(f, :booking_id, value: @booking.id) %>
+
+      <div class="flex justify-center items-center my-4">
+        <%= submit("Save",
+          phx_disable_with: "Saving...",
+          class: " h-[40px] px-8  bg-[#31786B]  text-[#FEFAF9]"
+        ) %>
+      </div>
+    </div>
+  </.form>
+</div>

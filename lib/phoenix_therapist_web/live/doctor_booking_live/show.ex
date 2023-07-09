@@ -46,4 +46,6 @@ defmodule PhoenixTherapistWeb.DoctorBookingLive.Show do
   end
 
   defp page_title(:show), do: "Show Booking"
+  defp page_title(:addnotes), do: "Add Note"
+  defp page_title(:editnote), do: "Edit Note"
 end

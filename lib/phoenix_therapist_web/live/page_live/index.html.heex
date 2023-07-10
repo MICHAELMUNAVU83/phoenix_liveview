@@ -82,7 +82,7 @@
 
 <div
   id="aboutthecompany"
-  class="bg-white md:h-[100vh] flex flex-col md:flex-row md:px-8 px-4 items-center justify-center gap-[50px]"
+  class="bg-white md:h-[100vh] py-16 md:py-0 flex flex-col md:flex-row md:px-8 px-4 items-center justify-center gap-[50px]"
 >
   <div class="h-[800px] md:w-[40%] pt-8 md:pt-0  relative">
     <img src="/images/chooseus.jpeg" class="w-[100%] h-[100%] object-cover" />
@@ -317,11 +317,11 @@
         <div class="flex flex-col">
           <div>
             <div class="flex justify-center ">
-              <div class="flex items-center border-b-4 text-xl poppins-bold border-[#E6E6E8] p-4  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
+              <div class="flex items-center  md:text-xl text-xs border-b-4 text-xl poppins-bold border-[#E6E6E8] p-4  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
                 <img src="/images/why1.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Online Counselling
               </div>
-              <div class="flex items-center text-xl poppins-bold border-l-4 border-b-4 border-[#E6E6E8] p-4  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
+              <div class="flex items-center md:text-xl text-xs poppins-bold border-l-4 border-b-4 border-[#E6E6E8] p-4  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
                 <img src="/images/why2.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Brain Checkup
               </div>
@@ -329,19 +329,19 @@
           </div>
           <div>
             <div class="flex justify-center ">
-              <div class="flex items-center text-xl poppins-bold  border-[#E6E6E8] p-8  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
+              <div class="flex items-center  md:text-xl text-xs poppins-bold  border-[#E6E6E8] p-8  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
                 <img src="/images/why3.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Experts Doctors
               </div>
-              <div class="flex items-center border-l-4 text-xl poppins-bold  border-[#E6E6E8]  p-8  w-[400px] font-semibold h-[150px] gap-2">
+              <div class="flex items-center border-l-4  md:text-xl text-xs poppins-bold  border-[#E6E6E8]  p-8  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
                 <img src="/images/why1.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Medico Reports
               </div>
             </div>
           </div>
-          <div class="flex justify-around mt-8">
+          <div class="flex md:flex-row flex-col items-center justify-center  md:justify-around py-8 md:py-0 mt-8">
             <%= live_redirect to: Routes.booking_index_path(@socket , :index)  do %>
-              <button class=" px-12 py-4 border-2 poppins-bold text-xl hover:bg-[#EFA286] hover:text-white  hover:border-transparent transition-all ease-in-out duration-500 text-[#9B9FA1] font-semibold  border-gray-400">
+              <button class=" md:px-12 px-4 md:py-4 py-2 border-2 poppins-bold text-xl hover:bg-[#EFA286] hover:text-white  hover:border-transparent transition-all ease-in-out duration-500 text-[#9B9FA1] font-semibold  border-gray-400">
                 Make an Appointment
               </button>
             <% end %>
@@ -375,9 +375,9 @@
   </div>
 </div>
 
-<div class="bg-white min-h-[60vh] flex items-center justify-normal">
-  <div class="w-[85%] py-12  mx-auto bg-[#31786B] text-white grid grid-cols-4 gap-8">
-    <div class="flex border-r border-white  justify-center items-center flex-col">
+<div class="bg-white md:min-h-[60vh] flex md:flex-row flex-col  items-center justify-normal">
+  <div class="w-[85%] py-12 md:p-0 mx-auto p-4 bg-[#31786B] text-white grid md:grid-cols-4 gap-8">
+    <div class="flex md:border-r border-b p-4 md:border-b-0 border-white  justify-center items-center flex-col">
       <img src="/images/statistics1.png" class="w-[100px] h-[100px] object-cover" />
       <p class="w-[50%] poppins-regular mx-auto text-center">
         Certificates and awards
@@ -386,7 +386,7 @@
         200
       </p>
     </div>
-    <div class="flex border-r border-white  justify-center items-center flex-col">
+    <div class="flex md:border-r border-b p-4 md:border-b-0 border-white  justify-center items-center flex-col">
       <img src="/images/statistics2.png" class="w-[100px] h-[100px] object-cover" />
       <p class="w-[50%] poppins-regular mx-auto text-center">
         Psychologys
@@ -396,7 +396,7 @@
         350
       </p>
     </div>
-    <div class="flex border-r border-white  justify-center items-center flex-col">
+    <div class="flex md:border-r border-b p-4 md:border-b-0 border-white  justify-center items-center flex-col">
       <img src="/images/statistics3.png" class="w-[100px] h-[100px] object-cover" />
       <p class="w-[50%] mx-auto poppins-regular text-center">
         Individual
@@ -429,7 +429,7 @@
     Meet Our Team Members
   </p>
 
-  <div class="grid grid-cols-4 mt-16 px-4 gap-12">
+  <div class="grid md:grid-cols-4 mt-16 px-4 gap-12">
     <div class="bg-white shadow-md hover:scale-105 transition-all ease-in-out duration-500 cursor-pointer shadow-gray-400">
       <img src="/images/team-1.png" class="w-[100%] object-cover h-[300px] " />
       <div class="p-4 flex flex-col items-start ">
@@ -482,7 +482,7 @@
 
 <div id="contactus" class="bg-white p-4 h-[20vh]   ">
   <div class="w-[80%] mx-auto flex flex-col">
-    <div class="flex justify-between items-start">
+    <div class="flex md:flex-row flex-col justify-center md:justify-between items-center md:items-start">
       <div class="flex flex-col">
         <p>
           logo here

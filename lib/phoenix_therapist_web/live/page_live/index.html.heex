@@ -1,43 +1,43 @@
 <div class="h-[100vh] homebg w-[100%] bg-center bg-cover bg-no-repeat">
-  <div class="bg-[#EFA286] w-[80%] poppins-regular p-4 flex items-center justify-between h-[70px] mx-auto">
+  <div class="bg-[#EFA286] md:w-[80%] w-[90%] poppins-regular md:p-4 p-2 flex items-center justify-between h-[70px] mx-auto">
     <a
       href="#home"
-      class="text-white    text-xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+      class="text-white    md:text-xl text-xs uppercase hover:scale-105 transition-all duration-500 ease-in-out  md:ml-8 ml-2"
     >
       Home
     </a>
     <a
       href="#aboutthecompany"
-      class="text-white text-xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+      class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
     >
       About
     </a>
 
     <a
       href="#companyservices"
-      class="text-white text-xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+      class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
     >
       Services
     </a>
 
     <a
       href="#booknow"
-      class="text-white text-xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+      class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
     >
-      Book Now
+      Book 
     </a>
     <a
       href="#ourteam"
-      class="text-white text-xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+      class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
     >
-      Our Team
+       Team
     </a>
 
     <a
       href="#contactus"
-      class="text-white text-2xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+      class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
     >
-      Contact Us
+      Contact 
     </a>
 
     <%= if @user do %>
@@ -45,13 +45,13 @@
         to: Routes.user_session_path(@socket, :delete),
         method: :delete,
         class:
-          "text-white text-2xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+          "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
       ) %>
     <% else %>
       <%= link("Log in",
         to: Routes.user_session_path(@socket, :new),
         class:
-          "text-white text-2xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+          "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
       ) %>
     <% end %>
 
@@ -59,13 +59,13 @@
       <%= link("Dashboard",
         to: Routes.available_time_index_path(@socket, :index),
         class:
-          "text-white text-2xl uppercase hover:scale-105 transition-all duration-500 ease-in-out  ml-8"
+          "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
       ) %>
     <% end %>
   </div>
-  <div class="w-0 h-[80vh] border-t-[50vh] border-t-transparent border-l-[600px] border-l-[#31786B] border-b-[50vh] border-b-transparent">
+  <div class="w-0 md:h-[80vh] h-[20vh] md:border-t-[50vh] border-t-[20vh] border-t-transparent md:border-l-[600px]  border-l-[#31786B] md:border-b-[50vh] border-b-[20vh] border-b-transparent">
     <div style="position: absolute; top: 50%; left: 1%;" class="text-white text-4xl">
-      <div class="flex flex-col items-start text-5xl poppins-bold">
+      <div class="flex flex-col items-start text-[#31786B] md:text-white text-5xl poppins-bold">
         <div>
           Therapy makes
         </div>
@@ -82,18 +82,18 @@
 
 <div
   id="aboutthecompany"
-  class="bg-white h-[100vh] flex px-8 items-center justify-center gap-[50px]"
+  class="bg-white md:h-[100vh] flex flex-col md:flex-row md:px-8 px-4 items-center justify-center gap-[50px]"
 >
-  <div class="h-[800px] w-[40%] relative">
+  <div class="h-[800px] md:w-[40%] pt-8 md:pt-0  relative">
     <img src="/images/chooseus.jpeg" class="w-[100%] h-[100%] object-cover" />
-    <div class="absolute bg-[#EFA286]/20 flex justify-center items-center  w-[200px] h-[200px] -left-8 -top-12">
-      <div class="bg-[#31786B] h-[150px] poppins-bold text-white w-[150px] flex justify-center items-center">
+    <div class="absolute bg-[#EFA286]/20 flex justify-center items-center  md:w-[200px] md:h-[200px] w-[150px] h-[150px] -left-8 -top-12">
+      <div class="bg-[#31786B] md:h-[150px]  poppins-bold text-white md:w-[150px] h-[100px] w-[100px] flex justify-center items-center">
         About
       </div>
     </div>
-    <div class="absolute bg-cover bg-center bg-no-repeat yearsbg mt-8 w-[300px] h-[300px] -right-2 -bottom-4">
-      <div class="bg-white/50 h-[300px] flex justify-center items-center w-[300px]">
-        <div class="bg-[#31786B] h-[220px]  w-[220px] flex justify-center items-center flex-col">
+    <div class="absolute bg-cover bg-center bg-no-repeat yearsbg mt-8 md:w-[300px] md:h-[300px] h-[200px] w-[200px] -right-2 -bottom-4">
+      <div class="bg-white/50 md:h-[300px] h-[200px] flex justify-center items-center md:w-[300px] w-[200px]">
+        <div class="bg-[#31786B] md:h-[220px]  md:w-[220px] h-[150px] w-[150px] flex justify-center items-center flex-col">
           <div class="flex justify-center items-start">
             <p class="text-6xl poppins-bold text-white">
               12
@@ -117,22 +117,22 @@
     </div>
   </div>
 
-  <div class="h-[600px]  flex flex-col justify-between px-4  w-[40%]">
+  <div class="md:h-[600px]  flex flex-col justify-between px-4  md:w-[40%]">
     <p class="text-4xl poppins-light text-[#EFA286]">
       ABOUT OUR COMPANY
     </p>
 
-    <div class="text-6xl poppins-regular">
+    <div class="md:text-6xl text-4xl poppins-regular">
       Modern Caring Mental
       Health & Behavioral
       To <span class="text-[#EFA286]">Therapy</span>
     </div>
 
-    <p class="text-[#878C8F] text-xl font-semibold">
+    <p class="text-[#878C8F] text-xl mb-8 md:mb-0  font-semibold">
       There are emits consectetur notted aetinciduns pisicing elit sed a eiusmode tempor incididunt ut labore et dolore magna aliqua lonmea...
     </p>
 
-    <div class="flex justify-between w-[80%] items-center">
+    <div class="flex justify-between  w-[80%] items-center">
       <img src="/images/onlinecounselling.png" class="w-[100px] object-contain h-[100px]" />
       <div class="flex justify-between flex-col">
         <p class="text-xl font-bold poppins-regular">
@@ -145,9 +145,9 @@
       </div>
     </div>
 
-    <p class="h-[2px] w-[80%] mx-auto  bg-gray-400 " />
+    <p class="h-[2px] w-[80%] mx-auto my-4  md:my-0 bg-gray-400 " />
 
-    <div class="flex justify-between w-[80%] items-center">
+    <div class="flex justify-between   w-[80%] items-center">
       <img src="/images/grouptherapy.png" class="w-[100px] object-contain h-[100px]" />
       <div class="flex justify-between flex-col">
         <p class="text-xl font-bold poppins-regular">
@@ -173,8 +173,8 @@
     </p>
   </div>
 
-  <div class="w-[90%] mx-auto flex justify-between gap-4">
-    <div class="h-[420px] group w-[23%] relative cursor-pointer bg-white">
+  <div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between gap-4">
+    <div class="h-[420px] group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
       <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
         <img src="/images/feature1.png" class="w-[100px] h-[100px]" />
       </div>
@@ -204,7 +204,7 @@
       </div>
     </div>
 
-    <div class="h-[420px] mt-24  group w-[23%] relative cursor-pointer bg-white">
+    <div class="h-[420px] md:mt-24  group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
       <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
         <img src="/images/feature2.png" class="w-[100px] h-[100px]" />
       </div>
@@ -234,7 +234,7 @@
       </div>
     </div>
 
-    <div class="h-[420px] group w-[23%] relative cursor-pointer bg-white">
+    <div class="h-[420px] group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
       <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
         <img src="/images/feature3.png" class="w-[100px] h-[100px]" />
       </div>
@@ -264,7 +264,7 @@
       </div>
     </div>
 
-    <div class="h-[420px] mt-24 group w-[23%] relative cursor-pointer bg-white">
+    <div class="h-[420px] md:mt-24 group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
       <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
         <img src="/images/feature4.png" class="w-[100px] h-[100px]" />
       </div>
@@ -297,49 +297,49 @@
 </div>
 
 <%!-- start why choose us  --%>
-<div id="booknow" class="h-[100vh] bg-cover bg-center bg-no-repeat w-[100%] whybg">
-  <div class="w-[100%] bg-white/80 flex justify-center items-center h-[100%]">
-    <div class="flex justify-between items-center w-[90%] mx-auto ">
-      <div class="w-[48%] flex flex-col  justify-center gap-4 h-[100vh]">
-        <p class=" text-5xl  poppins-regular text-[#EFA286]">Why Choose Us</p>
-        <p class="text-4xl w-[90%] poppins-bold ">
+<div id="booknow" class="md:h-[100vh] bg-cover bg-center bg-no-repeat w-[100%] whybg">
+  <div class="w-[100%] bg-white/80 flex flex-col-reverse md:flex-row justify-center items-center h-[100%]">
+    <div class="flex md:flex-row flex-col-reverse justify-between items-center w-[90%] mx-auto ">
+      <div class="md:w-[48%] w-[100%] flex flex-col  justify-center gap-8  md:h-[100vh]">
+        <p class=" md:text-5xl text-3xl  poppins-regular text-[#EFA286]">Why Choose Us</p>
+        <p class="md:text-4xl text-2xl w-[90%] poppins-bold ">
           The leading mental health consultations center for you
         </p>
 
-        <p class=" text-2xl   poppins-regular text-[#EFA286]">
+        <p class=" md:text-2xl text-xl   poppins-regular text-[#EFA286]">
           Therapy With Dr. Wairimu
         </p>
 
-        <p class="font-semibold poppins-regular w-[90%] text-xl">
+        <p class="font-semibold poppins-regular md:w-[90%] w-[95%] text-xl">
           There are emits consectetur notted aetinciduns pisicing elit sed a eiusmode tempor incididunt ut labore et dolore magna aliqua lonmea knocked tje doorses seds ...
         </p>
 
         <div class="flex flex-col">
           <div>
             <div class="flex justify-center ">
-              <div class="flex items-center border-b-4 text-xl poppins-bold border-[#E6E6E8] p-4  w-[400px] font-semibold h-[150px] gap-2">
-                <img src="/images/why1.png" class="w-[100px] h-[100px] object-cover" />
+              <div class="flex items-center border-b-4 text-xl poppins-bold border-[#E6E6E8] p-4  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
+                <img src="/images/why1.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Online Counselling
               </div>
-              <div class="flex items-center text-xl poppins-bold border-l-4 border-b-4 border-[#E6E6E8] p-4  w-[400px] font-semibold h-[150px] gap-2">
-                <img src="/images/why2.png" class="w-[100px] h-[100px] object-cover" />
+              <div class="flex items-center text-xl poppins-bold border-l-4 border-b-4 border-[#E6E6E8] p-4  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
+                <img src="/images/why2.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Brain Checkup
               </div>
             </div>
           </div>
           <div>
             <div class="flex justify-center ">
-              <div class="flex items-center text-xl poppins-bold  border-[#E6E6E8] p-8  w-[400px] font-semibold h-[150px] gap-2">
-                <img src="/images/why3.png" class="w-[100px] h-[100px] object-cover" />
+              <div class="flex items-center text-xl poppins-bold  border-[#E6E6E8] p-8  w-[200px] md:w-[400px] font-semibold h-[150px] gap-2">
+                <img src="/images/why3.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Experts Doctors
               </div>
               <div class="flex items-center border-l-4 text-xl poppins-bold  border-[#E6E6E8]  p-8  w-[400px] font-semibold h-[150px] gap-2">
-                <img src="/images/why1.png" class="w-[100px] h-[100px] object-cover" />
+                <img src="/images/why1.png" class="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover" />
                 Medico Reports
               </div>
             </div>
           </div>
-          <div class="flex justify-around">
+          <div class="flex justify-around mt-8">
             <%= live_redirect to: Routes.booking_index_path(@socket , :index)  do %>
               <button class=" px-12 py-4 border-2 poppins-bold text-xl hover:bg-[#EFA286] hover:text-white  hover:border-transparent transition-all ease-in-out duration-500 text-[#9B9FA1] font-semibold  border-gray-400">
                 Make an Appointment
@@ -368,7 +368,7 @@
           </div>
         </div>
       </div>
-      <div class="w-[48%] h-[100vh]">
+      <div class="md:w-[48%] w-[100%] md:h-[100vh]">
         <img src="/images/chooseus.jpeg" class="w-[100%] object-cover h-[100%]" />
       </div>
     </div>

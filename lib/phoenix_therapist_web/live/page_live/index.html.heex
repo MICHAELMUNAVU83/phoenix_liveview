@@ -64,15 +64,15 @@
     <% end %>
   </div>
   <nav phx-hook="Navbar" id="nav">
-    <div class="flex  md:hidden justify-between p-2">
+    <div class="flex  md:hidden justify-between  items-center p-2">
       <div>
         <%= live_redirect to: Routes.page_index_path(@socket, :index) do %>
-          <p>
+          <p class="text-3xl poppins-regular text-[#31786B]">
             Therapy
           </p>
         <% end %>
       </div>
-      <button id="toggleButton" class=" flex flex-col bg-green-500 p-2 rounded-md gap-2  ">
+      <button id="toggleButton" class=" flex flex-col bg-[#EFA286] p-2 rounded-md gap-2  ">
         <p class="bg-white h-[4px] w-[40px]" />
         <p class="bg-white h-[4px] w-[40px]" />
         <p class="bg-white h-[4px] w-[40px]" />
@@ -81,9 +81,71 @@
 
     <div
       id="sidebar"
-      class="fixed green top-0 left-0 h-full w-60 z-50 bg-white transition duration-300 transform -translate-x-full"
+      class="fixed green top-0 left-0 h-full w-60 z-50 bg-[#EFA286] transition duration-300 transform -translate-x-full"
     >
       <div class="flex flex-col inter-regular gap-4 items-start p-4 pt-24 " id="sidebarContent">
+        <a
+          href="#home"
+          class="text-white    md:text-xl text-xs uppercase hover:scale-105 transition-all duration-500 ease-in-out  md:ml-8 ml-2"
+        >
+          Home
+        </a>
+        <a
+          href="#aboutthecompany"
+          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+        >
+          About
+        </a>
+
+        <a
+          href="#companyservices"
+          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+        >
+          Services
+        </a>
+
+        <a
+          href="#booknow"
+          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+        >
+          Book
+        </a>
+        <a
+          href="#ourteam"
+          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+        >
+          Team
+        </a>
+
+        <a
+          href="#contactus"
+          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+        >
+          Contact
+        </a>
+
+        <%= if @user do %>
+          <%= link("Logout",
+            to: Routes.user_session_path(@socket, :delete),
+            method: :delete,
+            class:
+              "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          ) %>
+        <% else %>
+          <%= link("Login",
+            to: Routes.user_session_path(@socket, :new),
+            class:
+              "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          ) %>
+        <% end %>
+
+        <%= if @admin_user do %>
+          <%= link("Dashboard",
+            to: Routes.available_time_index_path(@socket, :index),
+            class:
+              "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          ) %>
+        <% end %>
       </div>
     </div>
   </nav>

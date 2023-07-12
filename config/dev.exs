@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :phoenix_therapist, PhoenixTherapist.Repo,
-  username: "root",
-  password: "Michael@11",
+  username: "postgres",
+  password: "trance",
   hostname: "localhost",
   database: "phoenix_therapist_dev",
   stacktrace: true,

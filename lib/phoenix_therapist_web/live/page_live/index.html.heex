@@ -1,5 +1,5 @@
 <div class="h-[100vh] homebg w-[100%] bg-center bg-cover bg-no-repeat">
-  <div class="bg-[#EFA286] md:w-[80%] w-[90%] poppins-regular md:p-4 p-2 flex items-center justify-between h-[70px] mx-auto">
+  <div class="bg-[#EFA286]  w-[90%] poppins-regular p-4 hidden md:flex items-center justify-between h-[70px] mx-auto">
     <a
       href="#home"
       class="text-white    md:text-xl text-xs uppercase hover:scale-105 transition-all duration-500 ease-in-out  md:ml-8 ml-2"
@@ -63,6 +63,30 @@
       ) %>
     <% end %>
   </div>
+  <nav phx-hook="Navbar" id="nav">
+    <div class="flex  md:hidden justify-between p-2">
+      <div>
+        <%= live_redirect to: Routes.page_index_path(@socket, :index) do %>
+          <p>
+            Therapy
+          </p>
+        <% end %>
+      </div>
+      <button id="toggleButton" class=" flex flex-col bg-green-500 p-2 rounded-md gap-2  ">
+        <p class="bg-white h-[4px] w-[40px]" />
+        <p class="bg-white h-[4px] w-[40px]" />
+        <p class="bg-white h-[4px] w-[40px]" />
+      </button>
+    </div>
+
+    <div
+      id="sidebar"
+      class="fixed green top-0 left-0 h-full w-60 z-50 bg-white transition duration-300 transform -translate-x-full"
+    >
+      <div class="flex flex-col inter-regular gap-4 items-start p-4 pt-24 " id="sidebarContent">
+      </div>
+    </div>
+  </nav>
   <div class="w-0 md:h-[80vh] h-[20vh] md:border-t-[50vh] border-t-[20vh] border-t-transparent md:border-l-[600px]  border-l-[#31786B] md:border-b-[50vh] border-b-[20vh] border-b-transparent">
     <div style="position: absolute; top: 50%; left: 1%;" class="text-white text-4xl">
       <div class="flex flex-col items-start text-[#31786B] md:text-white text-5xl poppins-bold">
@@ -289,7 +313,7 @@
         </p>
         <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
         <p class="p-2 text-[#969B9E] text-xs poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
-          Drawing from your theoretical orientation and evidence-based practices, you employ various therapeutic interventions. These can include cognitive-behavioral therapy (CBT), psychodynamic therapy, humanistic therapy and  family systems therapy . 
+          Drawing from your theoretical orientation and evidence-based practices, you employ various therapeutic interventions. These can include cognitive-behavioral therapy (CBT), psychodynamic therapy, humanistic therapy and  family systems therapy .
         </p>
         <div class="flex p-2 w-[100%] justify-between items-center">
           <div class="flex items-center gap-2">

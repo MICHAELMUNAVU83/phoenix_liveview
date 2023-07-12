@@ -66,6 +66,8 @@ defmodule PhoenixTherapistWeb.AvailableTimeLive.FormComponent do
         time.time == available_time_params["time"]
       end)
 
+    IO.inspect(times_selected)
+
     if !time_already_selected do
       if length(times_selected) >= 4 do
         {:noreply,

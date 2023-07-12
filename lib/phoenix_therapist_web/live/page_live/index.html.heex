@@ -41,14 +41,14 @@
     </a>
 
     <%= if @user do %>
-      <%= link("Log out",
+      <%= link("Logout",
         to: Routes.user_session_path(@socket, :delete),
         method: :delete,
         class:
           "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
       ) %>
     <% else %>
-      <%= link("Log in",
+      <%= link("Login",
         to: Routes.user_session_path(@socket, :new),
         class:
           "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
@@ -79,8 +79,6 @@
     </div>
   </div>
 </div>
-
-<a href="./directory/contract.pdf" download="newfilename">Download the pdf</a>
 
 <div
   id="aboutthecompany"
@@ -161,6 +159,16 @@
         </p>
       </div>
     </div>
+
+    <div class="flex  justify-start">
+      <a
+        href="./directory/contract.pdf"
+        download="patient-contract"
+        class="bg-[#31786B] poppins-regular hover:scale-105 transition-all duration-500 ease-in-out text-white px-4 py-2"
+      >
+        Read Our Patient Contract
+      </a>
+    </div>
   </div>
 </div>
 
@@ -170,8 +178,12 @@
 >
   <p class="text-center text-5xl font-bold poppins-bold text-[#EFA286]">OUR SERVICES</p>
   <div class="flex text-3xl mb-[100px] mt-4 justify-center items-center flex-col">
-    <p class="poppins-regular">
-      Psychological Services
+    <p class="poppins-regular w-[70%] mx-auto text-sm text-center text-gray-500">
+      As a psychologist, my role involves helping individuals, couples, families, or groups improve their mental health and overall well-being. I have received specialized education and training in psychology, which includes understanding human behavior, emotions, and thought processes. Your expertise allows you to assess, diagnose, and provide therapeutic interventions to support my clients.
+    </p>
+
+    <p class="poppins-regular w-[70%] mx-auto text-sm text-center text-gray-500">
+      In therapy, i create a safe and confidential space where clients can openly express their thoughts, feelings, and concerns. I employ various therapeutic approaches and techniques depending on the needs of the individual or group I am working with. Here is a brief overview of what typically happens in therapy:
     </p>
   </div>
 
@@ -183,16 +195,17 @@
 
       <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
         <p class="text-2xl p-2 poppins-bold">
-          Individual Counselling
+          Assessment
         </p>
         <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
-        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
-          We have all experienced feelings that we did not wish to feel all know how painful it can be to dwellexs.
+        <p class="p-2 text-[#969B9E] text-xs poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+        At the beginning of therapy, you conduct an initial assessment to gather relevant information about the client's background, history, and current concerns. This assessment may involve interviews, questionnaires, and other assessment tools to gain a comprehensive understanding of the client's situation.
+
         </p>
         <div class="flex p-2 w-[100%] justify-between items-center">
           <div class="flex items-center gap-2">
             <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
-              Read More
+              Service
             </p>
             <p class="w-[50px] h-[2px] bg-gray-300" />
           </div>
@@ -213,16 +226,16 @@
 
       <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
         <p class="text-2xl p-2 poppins-bold">
-          The Spiritual Goals
+          Goal Setting
         </p>
         <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
-        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
-          We have all experienced feelings that we did not wish to feel all know how painful it can be to dwellexs.
+        <p class="p-2 text-[#969B9E] text-xs poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+        Based on the assessment, you work collaboratively with the client to set specific goals for therapy. These goals are often centered around improving mental health, developing coping skills, enhancing relationships, or resolving specific issues.
         </p>
         <div class="flex p-2 w-[100%] justify-between items-center">
           <div class="flex items-center gap-2">
             <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
-              Read More
+              Service 
             </p>
             <p class="w-[50px] h-[2px] bg-gray-300" />
           </div>
@@ -243,16 +256,16 @@
 
       <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
         <p class="text-2xl p-2 poppins-bold">
-          Personality Disorders
+          Therapeutic Relationship
         </p>
         <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
-        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
-          We have all experienced feelings that we did not wish to feel all know how painful it can be to dwellexs.
+        <p class="p-2 text-[#969B9E] text-xs poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+          Building a strong therapeutic relationship is crucial. You establish trust, empathy, and rapport with your clients, creating a safe and nonjudgmental environment for them to share their experiences.
         </p>
         <div class="flex p-2 w-[100%] justify-between items-center">
           <div class="flex items-center gap-2">
             <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
-              Read More
+              Service
             </p>
             <p class="w-[50px] h-[2px] bg-gray-300" />
           </div>
@@ -273,23 +286,146 @@
 
       <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
         <p class="text-2xl p-2 poppins-bold">
-          Troubling Emotions
+         Therapeutic Interventions
         </p>
         <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
-        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
-          We have all experienced feelings that we did not wish to feel all know how painful it can be to dwellexs.
+        <p class="p-2 text-[#969B9E] text-xs poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+         Drawing from your theoretical orientation and evidence-based practices, you employ various therapeutic interventions. These can include cognitive-behavioral therapy (CBT), psychodynamic therapy, humanistic therapy, family systems therapy, mindfulness-based techniques, and more. The specific techniques used will depend on the client's needs and the approach you employ.
+
         </p>
         <div class="flex p-2 w-[100%] justify-between items-center">
           <div class="flex items-center gap-2">
             <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
-              Read More
+              Service
             </p>
             <p class="w-[50px] h-[2px] bg-gray-300" />
           </div>
 
           <div class="text-4xl text-gray-500 group-hover:text-white transition-all duration-300 ease-in-out poppins-bold uppercase  text-stroke-2">
             <p>
-              03
+              04
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between gap-4">
+    <div class="h-[420px] group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
+      <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
+        <img src="/images/feature1.png" class="w-[100px] h-[100px]" />
+      </div>
+
+      <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
+        <p class="text-2xl p-2 poppins-bold">
+       Active Listening and Reflection
+        </p>
+        <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
+        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+        Throughout the therapy sessions, you actively listen to your clients' concerns and provide reflective responses. 
+        </p>
+        <div class="flex p-2 w-[100%] justify-between items-center">
+          <div class="flex items-center gap-2">
+            <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
+              Service
+            </p>
+            <p class="w-[50px] h-[2px] bg-gray-300" />
+          </div>
+
+          <div class="text-4xl text-gray-500 group-hover:text-white transition-all duration-300 ease-in-out poppins-bold uppercase  text-stroke-2">
+            <p>
+              05
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-[420px] md:mt-24  group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
+      <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
+        <img src="/images/feature2.png" class="w-[100px] h-[100px]" />
+      </div>
+
+      <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
+        <p class="text-2xl p-2 poppins-bold">
+          Skill-Building and Coping Strategies
+        </p>
+        <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
+        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+        In therapy, you may teach clients specific skills and coping strategies to help them manage their difficulties more effectively. 
+        </p>
+        <div class="flex p-2 w-[100%] justify-between items-center">
+          <div class="flex items-center gap-2">
+            <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
+              Service
+            </p>
+            <p class="w-[50px] h-[2px] bg-gray-300" />
+          </div>
+
+          <div class="text-4xl text-gray-500 group-hover:text-white transition-all duration-300 ease-in-out poppins-bold uppercase  text-stroke-2">
+            <p>
+              06
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-[420px] group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
+      <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
+        <img src="/images/feature3.png" class="w-[100px] h-[100px]" />
+      </div>
+
+      <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
+        <p class="text-2xl p-2 poppins-bold">
+          Processing and Emotional Support
+        </p>
+        <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
+        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+       Therapy provides a space for clients to process their emotions and experiences. 
+        </p>
+        <div class="flex p-2 w-[100%] justify-between items-center">
+          <div class="flex items-center gap-2">
+            <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
+              Service
+            </p>
+            <p class="w-[50px] h-[2px] bg-gray-300" />
+          </div>
+
+          <div class="text-4xl text-gray-500 group-hover:text-white transition-all duration-300 ease-in-out poppins-bold uppercase  text-stroke-2">
+            <p>
+              07
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-[420px] md:mt-24 group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
+      <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
+        <img src="/images/feature4.png" class="w-[100px] h-[100px]" />
+      </div>
+
+      <div class="flex items-start h-[100%]  pt-[140px] group-hover:bg-[#31786B] group-hover:text-white transition-all duration-300 ease-in-out  justify-betweeen flex-col">
+        <p class="text-2xl p-2 poppins-bold">
+         Monitoring Progress and Adjustment
+        </p>
+        <p class="h-[1px] w-[100%] my-4 bg-gray-200" />
+        <p class="p-2 text-[#969B9E] poppins-light group-hover:text-white transition-all duration-300 ease-in-out">
+         Throughout therapy, you regularly monitor the client's progress toward their goals. 
+        </p>
+        <div class="flex p-2 w-[100%] justify-between items-center">
+          <div class="flex items-center gap-2">
+            <p class="text-xl poppins-regular text-gray-600 group-hover:text-white transition-all duration-300 ease-in-out  ">
+              Service
+            </p>
+            <p class="w-[50px] h-[2px] bg-gray-300" />
+          </div>
+
+          <div class="text-4xl text-gray-500 group-hover:text-white transition-all duration-300 ease-in-out poppins-bold uppercase  text-stroke-2">
+            <p>
+              08
             </p>
           </div>
         </div>

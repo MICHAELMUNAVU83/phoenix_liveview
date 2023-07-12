@@ -37,13 +37,24 @@ defmodule PhoenixTherapist.Bookings do
   end
 
   def search_bookings_by_user_name(name) do
+    # ws = "%#{id}%"
+    # Repo.all(
+    #   from(
+    #     m in Csv,
+    #     where: like(m.name , ^ws), or_where:  like(m.description, ^ws),  or_where: like(m.uom , ^ws), or_where: like(m.weight , ^ws), or_where: like(m.classification , ^ws), or_where: like( m.target_market , ^ws),
+    #     preload: [:member])
+    # )
     query =
-      from(b in Booking,
-        join: u in assoc(b, :user),
-        where: fragment("? LIKE ?", u.first_name, ^"%#{name}%")
+      Repo.all(
+        from(
+          b in Booking,
+          join: u in assoc(b, :user),
+          where: fragment("? LIKE ?", u.first_name, ^"%#{name}%"),
+          preload: [:user, :available_time]
+        )
       )
 
-    Repo.all(query)
+    query
   end
 
   @doc """

@@ -83,43 +83,46 @@
       id="sidebar"
       class="fixed green top-0 left-0 h-full w-60 z-50 bg-[#EFA286] transition duration-300 transform -translate-x-full"
     >
-      <div class="flex flex-col inter-regular gap-4 items-start p-4 pt-24 " id="sidebarContent">
+      <div
+        class="flex flex-col poppins-regular text-xl gap-4 items-start p-4 pt-24 "
+        id="sidebarContent"
+      >
         <a
           href="#home"
-          class="text-white    md:text-xl text-xs uppercase hover:scale-105 transition-all duration-500 ease-in-out  md:ml-8 ml-2"
+          class="text-white     uppercase hover:scale-105 transition-all duration-500 ease-in-out  md:ml-8 ml-2"
         >
           Home
         </a>
         <a
           href="#aboutthecompany"
-          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="text-white    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           About
         </a>
 
         <a
           href="#companyservices"
-          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="text-white    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           Services
         </a>
 
         <a
           href="#booknow"
-          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="text-white    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           Book
         </a>
         <a
           href="#ourteam"
-          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="text-white    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           Team
         </a>
 
         <a
           href="#contactus"
-          class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="text-white    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           Contact
         </a>
@@ -129,13 +132,13 @@
             to: Routes.user_session_path(@socket, :delete),
             method: :delete,
             class:
-              "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+              "text-white    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
           ) %>
         <% else %>
           <%= link("Login",
             to: Routes.user_session_path(@socket, :new),
             class:
-              "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+              "text-white   uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
           ) %>
         <% end %>
 
@@ -143,7 +146,7 @@
           <%= link("Dashboard",
             to: Routes.available_time_index_path(@socket, :index),
             class:
-              "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+              "text-white   uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
           ) %>
         <% end %>
       </div>
@@ -250,7 +253,7 @@
       <a
         href="./directory/contract.pdf"
         download="patient-contract"
-        class="bg-[#31786B] poppins-regular hover:scale-105 transition-all duration-500 ease-in-out text-white px-4 py-2"
+        class="bg-[#31786B] poppins-regular hover:scale-105 my-4 transition-all duration-500 ease-in-out text-white px-4 py-2"
       >
         Read Our Patient Contract
       </a>
@@ -273,7 +276,7 @@
     </p>
   </div>
 
-  <div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between gap-4">
+  <div class="w-[90%] mx-auto my-4 flex flex-col md:flex-row justify-between md:gap-4 gap-20">
     <div class="h-[420px] group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
       <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
         <img src="/images/feature1.png" class="w-[100px] h-[100px]" />
@@ -395,7 +398,7 @@
     </div>
   </div>
 
-  <div class="w-[90%] mx-auto flex flex-col md:flex-row justify-between gap-4">
+  <div class="w-[90%] mx-auto my-4 flex flex-col md:flex-row justify-between md:gap-4 gap-20">
     <div class="h-[420px] group md:w-[23%] w-[90%] mx-auto  relative cursor-pointer bg-white">
       <div class="h-[140px] w-[140px] -mt-8 flex justify-center items-center absolute top-0 group-hover:bg-[#EFA286] transition-all duration-300 ease-in-out  bg-[#31786B]">
         <img src="/images/feature1.png" class="w-[100px] h-[100px]" />

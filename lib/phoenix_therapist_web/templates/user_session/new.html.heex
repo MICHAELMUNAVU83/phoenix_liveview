@@ -1,8 +1,8 @@
 <div class="bg-[#FEFAF9] h-[100vh] flex justify-center items-center">
-  <div class="w-[50%] h-[100%]">
+  <div class="md:w-[50%] hidden md:block h-[100%]">
     <img src="/images/chooseus.jpeg" alt="chooseus" class="w-[100%] h-[100%] object-cover" />
   </div>
-  <div class="w-[50%] h-[100%] flex flex-col justify-between ">
+  <div class="md:w-[50%] w-[100%] h-[100%] flex flex-col justify-between ">
     <div class="flex justify-end">
       <div class="w-0 h-0
   border-t-[50px] border-t-transparent
@@ -10,7 +10,7 @@
   border-b-[50px] border-b-transparent">
       </div>
     </div>
-    <div class="flex justify-center flex-col w-[80%] mx-auto gap-8  h-[100%]">
+    <div class="flex justify-center flex-col md:w-[80%] mx-auto gap-8  h-[100%]">
       <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
         <%= if @error_message do %>
           <div class="alert alert-danger">
@@ -54,7 +54,7 @@
         <%= link("Register", to: Routes.user_registration_path(@conn, :new)) %> | <%= link(
           "Forgot your password?",
           to: Routes.user_reset_password_path(@conn, :new)
-        ) %>
+        ) %> | <%= link("Back Home", to: Routes.page_index_path(@conn, :index)) %>
       </p>
     </div>
     <div class="w-0 h-0

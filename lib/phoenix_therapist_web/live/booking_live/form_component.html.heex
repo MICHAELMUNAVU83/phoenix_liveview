@@ -1,5 +1,5 @@
 <div>
-  <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+  <h2 class="md:text-2xl text-xl font-bold text-gray-800 mb-4 text-center">
     Book an Appointment for <%= @selected_date %>
   </h2>
 
@@ -11,8 +11,8 @@
     phx-change="validate"
     phx-submit="save"
   >
-    <div class="flex justify-between w-[100%] items-center">
-      <div class="flex flex-col w-[48%]  ">
+    <div class="flex md:flex-row flex-col  justify-between w-[100%] items-center">
+      <div class="flex flex-col md:w-[48%] w-[100%]  ">
         <%= label(f, :counselor_gender_preference) %>
         <%= select(f, :counselor_gender_preference, ["Male", "Female", "No Preference"],
           prompt: "Select a gender preference",
@@ -24,7 +24,7 @@
         </p>
       </div>
 
-      <div class="flex flex-col w-[48%]  ">
+      <div class="flex flex-col md:w-[48%] w-[100%]  ">
         <%= label(f, :referred_by) %>
         <%= text_input(f, :referred_by,
           class:
@@ -36,8 +36,8 @@
       </div>
     </div>
 
-    <div class="flex justify-between w-[100%] items-center">
-      <div class="flex flex-col w-[48%]  ">
+    <div class="flex md:flex-row flex-col  justify-between w-[100%] items-center">
+      <div class="flex flex-col md:w-[48%] w-[100%]  ">
         <p>
           Select a time
         </p>
@@ -50,7 +50,7 @@
           <%= error_tag(f, :available_time_id) %>
         </p>
       </div>
-      <div class="flex flex-col w-[48%]  ">
+      <div class="flex flex-col md:w-[48%] w-[100%]  ">
         <%= label(f, :medical_history) %>
         <%= text_input(f, :medical_history,
           class:
@@ -62,8 +62,8 @@
       </div>
     </div>
 
-    <div class="flex justify-between w-[100%] items-center">
-      <div class="flex flex-col w-[48%]  ">
+    <div class="flex md:flex-row flex-col  justify-between w-[100%] items-center">
+      <div class="flex flex-col md:w-[48%] w-[100%]   ">
         <%= label(f, :next_of_kin_name) %>
         <%= text_input(f, :next_of_kin_name,
           class:
@@ -73,7 +73,7 @@
           <%= error_tag(f, :next_of_kin_name) %>
         </p>
       </div>
-      <div class="flex flex-col w-[48%]  ">
+      <div class="flex flex-col md:w-[48%] w-[100%]   ">
         <p>
           Next of Kin Phone Number
         </p>

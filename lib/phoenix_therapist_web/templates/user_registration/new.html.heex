@@ -5,12 +5,12 @@
   <div class="md:w-[50%] w-[100%] h-[100vh] flex flex-col justify-between ">
     <div class="flex justify-end">
       <div class="w-0 h-0
-  border-t-[50px] border-t-transparent
-  border-r-[75px] border-r-[#31786B]
-  border-b-[50px] border-b-transparent">
+  md:border-t-[50px] border-t-[25px] border-t-transparent
+  md:border-r-[75px] border-r-[50px] border-r-[#31786B]
+  md:border-b-[50px] border-b-[25px] border-b-transparent">
       </div>
     </div>
-    <div class="flex justify-center flex-col gap-4 h-[70%] w-[80%] mx-auto   ">
+    <div class="flex justify-center flex-col gap-4 h-[50%] w-[80%] mx-auto   ">
       <.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
         <%= if @changeset.action do %>
           <div class="alert alert-danger">
@@ -232,8 +232,8 @@
         </div>
       </.form>
 
-      <p class="flex justify-center  items-center gap-4 ">
-        <%= link("Log in", to: Routes.user_session_path(@conn, :new)) %> | <%= link(
+      <p class="flex justify-center text-sm md:text-base  items-center gap-4 ">
+        <%= link("Login", to: Routes.user_session_path(@conn, :new)) %> | <%= link(
           "Forgot your password?",
           to: Routes.user_reset_password_path(@conn, :new)
         ) %>| <%= link("Back Home", to: Routes.page_index_path(@conn, :index)) %>
@@ -242,8 +242,8 @@
 
     <div class="w-0 h-0
   border-t-[50px] border-t-transparent
-  border-l-[75px] border-l-[#31786B]
-  border-b-[50px] border-b-transparent">
+  md:border-l-[75px] border-l-[50px] border-l-[#31786B]
+  md:border-b-[50px] border-b-[25px]  border-b-transparent">
     </div>
   </div>
 </div>

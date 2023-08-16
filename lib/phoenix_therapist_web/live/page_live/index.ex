@@ -6,7 +6,7 @@ defmodule PhoenixTherapistWeb.PageLive.Index do
     if session["user_token"] != nil do
       user = Accounts.get_user_by_session_token(session["user_token"])
 
-      admin_user_emails = ["michaelmunavu83@gmail.com", "arafatkivuvanigmail.com"]
+      admin_user_emails = ["admin@gmail.com", "marierose.uwamhoro@icloud.com"]
 
       admin_users =
         Enum.any?(admin_user_emails, fn admin_user_email ->

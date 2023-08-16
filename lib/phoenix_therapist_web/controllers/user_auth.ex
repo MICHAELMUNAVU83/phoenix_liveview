@@ -140,7 +140,7 @@ defmodule PhoenixTherapistWeb.UserAuth do
   end
 
   def require_admin(conn, _opts) do
-    admin_user_emails = ["michaelmunavu83@gmail.com", "arafatkivuvanigmail.com"]
+    admin_user_emails = ["admin@gmail.com", "marierose.uwamhoro@icloud.com"]
 
     if conn.assigns[:current_user] && conn.assigns[:current_user].email in admin_user_emails do
       conn

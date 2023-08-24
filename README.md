@@ -15,11 +15,13 @@ On the Minds
 This is a booking system for a therapist that allows her to set the times she is available and allows users to get the available times and book an appointment.
 
 ## Screenshots
-![Screenshot 2023-08-24 at 09 12 02](https://github.com/MICHAELMUNAVU83/truck_expense_system/assets/86654131/83859fdc-a6b0-4632-8680-78f5d8bdf72b)
+
+
+Uploading Untitled design (9).mp4…
 
 
 
-https://github.com/MICHAELMUNAVU83/truck_expense_system/assets/86654131/dd0ad079-3a68-4ead-baba-786ecf2ebc5b
+
 
 
 
